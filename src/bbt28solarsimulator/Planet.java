@@ -9,6 +9,7 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public interface Planet {
+public interface Planet 
+{
     
 }

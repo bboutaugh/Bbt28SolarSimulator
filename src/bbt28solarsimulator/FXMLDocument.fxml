@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,50 +11,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bbt28solarsimulator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bbt28solarsimulator.FXMLDocumentController">
    <children>
-      <MenuBar layoutX="1.0" layoutY="2.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="900.0">
+      <MenuBar fx:id="menuBar" layoutX="1.0" layoutY="2.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="900.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Go" />
-                  <MenuItem mnemonicParsing="false" text="Stop" />
-                  <MenuItem mnemonicParsing="false" text="Reset" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="goMenuItem" mnemonicParsing="false" text="Go" />
+                  <MenuItem fx:id="stopMenuItem" mnemonicParsing="false" text="Stop" />
+                  <MenuItem fx:id="resetMenuItem" mnemonicParsing="false" text="Reset" />
+                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Planets">
+          <Menu fx:id="menuPlanets" mnemonicParsing="false" text="Planets">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Mercury" />
-              <MenuItem mnemonicParsing="false" text="Venus" />
-                  <MenuItem mnemonicParsing="false" text="Earth" />
-                  <MenuItem mnemonicParsing="false" text="Mars" />
-                  <MenuItem mnemonicParsing="false" text="Jupiter" />
-                  <MenuItem mnemonicParsing="false" text="Saturn" />
-                  <MenuItem mnemonicParsing="false" text="Uranus" />
-                  <MenuItem mnemonicParsing="false" text="Neptune" />
+                  <MenuItem fx:id="mercuryMenuItem" mnemonicParsing="false" text="Mercury" />
+              <MenuItem fx:id="venusMenuItem" mnemonicParsing="false" text="Venus" />
+                  <MenuItem fx:id="earthMenuItem" mnemonicParsing="false" text="Earth" />
+                  <MenuItem fx:id="marsMenuItem" mnemonicParsing="false" text="Mars" />
+                  <MenuItem fx:id="jupiterMenuItem" mnemonicParsing="false" text="Jupiter" />
+                  <MenuItem fx:id="saturnMenuItem" mnemonicParsing="false" text="Saturn" />
+                  <MenuItem fx:id="uranusMenuItem" mnemonicParsing="false" text="Uranus" />
+                  <MenuItem fx:id="neptuneMenuItem" mnemonicParsing="false" text="Neptune" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Orbit Speed">
+          <Menu fx:id="menuOrbitalSpeed" mnemonicParsing="false" text="Orbit Speed">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="halfSpeedMenuItem" mnemonicParsing="false" text="x 0.5" />
+              <MenuItem fx:id="regularSpeedMenuItem" mnemonicParsing="false" text="x 1.0" />
+                  <MenuItem fx:id="doubleSpeedMenuItem" mnemonicParsing="false" text="x 2.0" />
+                  <MenuItem fx:id="fiveTimesSpeedMenuItem" mnemonicParsing="false" text="x 5.0" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="View">
+            <Menu fx:id="menuView" mnemonicParsing="false" text="View">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                <MenuItem fx:id="topDownViewMenuItem" mnemonicParsing="false" text="Top Down View" />
+                  <MenuItem fx:id="isometricViewMenuItem" mnemonicParsing="false" text="Isometric View" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="About">
+            <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem fx:id="applicationInfoMenuItem" mnemonicParsing="false" text="Application Info" />
+                  <MenuItem fx:id="referencesMenuItem" mnemonicParsing="false" text="References" />
               </items>
             </Menu>
         </menus>
       </MenuBar>
-      <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="-112.0" layoutY="318.0" />
-      <GridPane layoutX="14.0" layoutY="28.0" prefHeight="576.0" prefWidth="888.0">
+      <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="-112.0" layoutY="318.0" />
+      <GridPane fx:id="gridPane" layoutX="14.0" layoutY="28.0" prefHeight="576.0" prefWidth="888.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="700.0" />
@@ -64,53 +72,106 @@
             <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox prefHeight="52.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox fx:id="buttonsHBox" prefHeight="52.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Go" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Stop" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Reset" />
+                  <Button fx:id="goButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Go">
+                     <effect>
+                        <Lighting diffuseConstant="1.5" specularConstant="1.35" specularExponent="26.98">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="stopButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Stop">
+                     <effect>
+                        <Lighting diffuseConstant="1.49" specularConstant="1.5" specularExponent="29.77" surfaceScale="1.15">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="resetButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                     <effect>
+                        <Lighting diffuseConstant="1.4" specularConstant="1.51" specularExponent="27.44" surfaceScale="0.93">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                  </Button>
                </children>
             </HBox>
-            <VBox prefHeight="777.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <VBox fx:id="infoVBox" prefHeight="777.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Label text="Planet Attributes:" />
+                  <Label contentDisplay="CENTER" prefHeight="32.0" prefWidth="146.0" text="Planet Attributes:" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="15.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
                   <Label layoutX="10.0" layoutY="10.0" text="Orbital Period:" />
-                  <Label layoutX="10.0" layoutY="27.0" />
+                  <Label fx:id="orbitalPeriodValueDisplay" layoutX="10.0" layoutY="27.0" />
                   <Label layoutX="10.0" layoutY="44.0" text="Orbital Speed:" />
-                  <Label layoutX="10.0" layoutY="61.0" />
+                  <Label fx:id="orbitalSpeedValueDisplay" layoutX="10.0" layoutY="61.0" />
                   <Label layoutX="10.0" layoutY="78.0" text="Mass:" />
-                  <Label layoutX="10.0" layoutY="95.0" />
+                  <Label fx:id="massValueDisplay" layoutX="10.0" layoutY="95.0" />
                   <Label layoutX="10.0" layoutY="112.0" text="Volume:" />
-                  <Label layoutX="10.0" layoutY="129.0" />
+                  <Label fx:id="volumeValueDisplay" layoutX="10.0" layoutY="129.0" />
                   <Label layoutX="10.0" layoutY="146.0" text="Mean Radius:" />
-                  <Label layoutX="10.0" layoutY="163.0" />
+                  <Label fx:id="meanRadiusValueDisplay" layoutX="10.0" layoutY="163.0" />
                   <Label layoutX="10.0" layoutY="180.0" text="Surface Gravity:" />
-                  <Label layoutX="10.0" layoutY="197.0" />
+                  <Label fx:id="surfaceGravityValueDisplay" layoutX="10.0" layoutY="197.0" />
                   <Label layoutX="10.0" layoutY="214.0" text="Escape Velocity:" />
-                  <Label layoutX="10.0" layoutY="231.0" />
+                  <Label fx:id="escapeVelocityValueDisplay" layoutX="10.0" layoutY="231.0" />
                   <Label layoutX="10.0" layoutY="10.0" text="Number of Satellites:" />
-                  <Label layoutX="10.0" layoutY="265.0" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Planet Description: " />
-                  <TextArea prefHeight="200.0" prefWidth="200.0" />
+                  <Label fx:id="satelliteNumberValueDisplay" layoutX="10.0" layoutY="265.0" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Planet Description: ">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <TextArea fx:id="planetDescriptionDisplay" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <StackPane fx:id="sunStackPane" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                  <StackPane fx:id="mercuryStackPane" prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                        <StackPane fx:id="venusStackPane" prefHeight="150.0" prefWidth="200.0">
                            <children>
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                              <StackPane fx:id="earthStackPane" prefHeight="150.0" prefWidth="200.0">
                                  <children>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane fx:id="marsStackPane" prefHeight="150.0" prefWidth="200.0">
                                        <children>
-                                          <StackPane prefHeight="150.0" prefWidth="200.0">
+                                          <StackPane fx:id="jupiterStackPane" prefHeight="150.0" prefWidth="200.0">
                                              <children>
-                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                <StackPane fx:id="saturnStackPane" prefHeight="150.0" prefWidth="200.0">
                                                    <children>
-                                                      <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                      <StackPane fx:id="uranusStackPane" prefHeight="150.0" prefWidth="200.0">
                                                          <children>
-                                                            <StackPane prefHeight="150.0" prefWidth="200.0" />
+                                                            <StackPane fx:id="neptuneStackPane" prefHeight="150.0" prefWidth="200.0" />
                                                          </children>
                                                       </StackPane>
                                                    </children>
