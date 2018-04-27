@@ -9,7 +9,19 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
+
+//x = a(cosE - e)
+//y = bsinE 
+
+//E = eccentric anamoly
+//e = eccentricity
+//a = semi-major axis along x-axis
+//b = semi-major axis along y-axis
+//
 public interface Planet 
 {
-    
+    public void startOrbit();
+    public void updateOrbit();
+    public void endOrbit();
+    public void getPlanetData();
 }

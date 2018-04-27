@@ -20,7 +20,7 @@
               <MenuItem fx:id="goMenuItem" mnemonicParsing="false" text="Go" />
                   <MenuItem fx:id="stopMenuItem" mnemonicParsing="false" text="Stop" />
                   <MenuItem fx:id="resetMenuItem" mnemonicParsing="false" text="Reset" />
-                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeAction" text="Close" />
             </items>
           </Menu>
           <Menu fx:id="menuPlanets" mnemonicParsing="false" text="Planets">
@@ -74,7 +74,7 @@
          <children>
             <HBox fx:id="buttonsHBox" prefHeight="52.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="goButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Go">
+                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goAction" prefHeight="50.0" prefWidth="100.0" text="Go">
                      <effect>
                         <Lighting diffuseConstant="1.5" specularConstant="1.35" specularExponent="26.98">
                            <bumpInput>
@@ -89,7 +89,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="stopButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Stop">
+                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopAction" prefHeight="50.0" prefWidth="100.0" text="Stop">
                      <effect>
                         <Lighting diffuseConstant="1.49" specularConstant="1.5" specularExponent="29.77" surfaceScale="1.15">
                            <bumpInput>
@@ -104,7 +104,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="resetButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Reset">
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetAction" prefHeight="50.0" prefWidth="100.0" text="Reset">
                      <effect>
                         <Lighting diffuseConstant="1.4" specularConstant="1.51" specularExponent="27.44" surfaceScale="0.93">
                            <bumpInput>
