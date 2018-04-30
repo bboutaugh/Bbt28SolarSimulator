@@ -34,7 +34,10 @@ import javafx.util.Duration;
  *
  * @author Brad
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentController implements Initializable 
+{
+    Mercury mercury;
+    Earth earth = new Earth();
 
 //Buttons
 @FXML
@@ -169,7 +172,7 @@ Circle uranusCircle;
 @FXML
 Circle neptuneCircle;
 
-Earth earth;
+
 private Media media;
 private MediaPlayer mediaPlayer;
 
@@ -237,8 +240,56 @@ public void onClickVenusAction()
 @FXML
 public void onClickEarthAction()
 {
-   
+   public void setPlanetData(String orbitalPeriod, String orbitalSpeed, String mass,
+           String volume, String meanRadius, String surfaceGravity, String escapeVelocity,
+        String satelliteNumber, String planetDescription)
+{
+earth.addPropertyChangeListener(new PropertyChangeListener()
+{
+ public void propertyChange(PropertyChangeEvent event)
+{
+if(event.getPropertyName().equals("identifier"))
+{
+ orbitalPeriodValueDisplay.setText((String)event.getNewValue());   
 }
+
+if(event.getPropertyName().equals("identifier"))
+{
+  orbitalSpeedValueDisplay.setText((String)event.getNewValue());  
+}
+
+if(event.getPropertyName().equals("identifier"))
+{
+  massValueDisplay.setText((String)event.getNewValue());   
+}
+if(event.getPropertyName().equals("identifier"))
+{
+  volumeValueDisplay.setText((String)event.getNewValue());  
+}
+
+if(event.getPropertyName().equals("identifier"))
+{
+  meanRadiusValueDisplay.setText((String)event.getNewValue());   
+}
+ 
+if(event.getPropertyName().equals("identifier"))
+{
+  surfaceGravityValueDisplay.setText((String)event.getNewValue()); 
+}
+ if(event.getPropertyName().equals("identifier"))
+{
+   escapeVelocityValueDisplay.setText((String)event.getNewValue());  
+}
+if(event.getPropertyName().equals("identifier"))
+{
+  satelliteNumberValueDisplay.setText((String)event.getNewValue());   
+}
+if(event.getPropertyName().equals("identifier"))
+{
+  planetDescriptionDisplay.setText((String)event.getNewValue());
+}
+}});
+}                                                                     
 
 @FXML
 public void onClickMarsAction()
@@ -293,24 +344,9 @@ public void onClickFiveTimeSpeedAction()
     
 }
 
-@FXML
-public void setPlanetData(String orbitalPeriod, String orbitalSpeed, String mass,
-        String volume, String meanRadius, String surfaceGravity, String escapeVelocity,
-        String satelliteNumber, String planetDescription)
-{
-   
- orbitalPeriodValueDisplay.setText(orbitalPeriod);
- orbitalSpeedValueDisplay.setText(orbitalSpeed);
- massValueDisplay.setText(mass);
- volumeValueDisplay.setText(volume);
- meanRadiusValueDisplay.setText(meanRadius);
- surfaceGravityValueDisplay.setText(surfaceGravity);
- escapeVelocityValueDisplay.setText(escapeVelocity);
- satelliteNumberValueDisplay.setText(satelliteNumber);
- planetDescriptionDisplay.setText(planetDescription);
-}
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+{
         // TODO
     }    
     

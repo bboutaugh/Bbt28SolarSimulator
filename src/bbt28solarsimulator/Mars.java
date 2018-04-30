@@ -9,7 +9,19 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Mars implements Planet{
+public class Mars implements Planet
+{
+String orbitalPeriod = "687 Earth days";
+String orbitalVelocity = "86,677 km/h";
+String mass = "6.41*10^23 kg";
+String volume = "1.63*10^11 km^3";
+String meanRadius = "3389.5 km";
+String surfaceGravity = "3.71 m/s^2";
+String escapeVelocity = "18,108 km/h";
+String numberOfSatellites = "2";
+String planetDescription = "Fourth planet from the sun. The planet's red hue comes from"
++"large deposits of oxidized iron on its surface. Ongoing research suggests that"
++"the planet may have had oceans in its ancient history.";
 
     @Override
     public void getPlanetData() {

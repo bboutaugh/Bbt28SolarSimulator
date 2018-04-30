@@ -11,7 +11,20 @@ package bbt28solarsimulator;
  */
 public class Mercury implements Planet
 {
+ String orbitalPeriod = "88 Earth days";
+String orbitalVelocity = "170,503 km/h";
+String mass = "3.3*10^23 kg";
+String volume = "6.08*10^10 km^3";
+String meanRadius = "2,439.7 km";
+String surfaceGravity = "3.7 m/s^2";
+String escapeVelocity = "15,300 km/h";
+String numberOfSatellites = "0";
+String planetDescription = "First planet from the sun. It is the smallest planet in the" 
++ "Solar System after Pluto was demoted to planetoid status. While its surface is "
++ "expectedly hot during the day (800 degrees Fahrenheit) its surface drops to -290 "
++ "degrees Fahrenheit at night.";
 
+FXMLDocumentController controller = new FXMLDocumentController();
     @Override
     public void getPlanetData() 
     {
