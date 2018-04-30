@@ -5,6 +5,8 @@
  */
 package bbt28solarsimulator;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 /**
@@ -147,13 +150,32 @@ MenuItem doubleSpeedMenuItem;
 @FXML
 MenuItem fiveTimesSpeedMenuItem;
 
+@FXML
+Circle sunCircle;
+@FXML
+Circle mercuryCircle;
+@FXML
+Circle venusCircle;
+@FXML
+Circle earthCircle;
+@FXML
+Circle marsCircle;
+@FXML
+Circle jupiterCircle;
+@FXML
+Circle saturnCircle;
+@FXML
+Circle uranusCircle;
+@FXML
+Circle neptuneCircle;
+
+Earth earth;
 private Media media;
 private MediaPlayer mediaPlayer;
 
-
 //Button Actions
  @FXML
- private void goAction(ActionEvent event)
+ public void goAction(ActionEvent event)
  {
      if(mediaPlayer != null)
      {
@@ -162,7 +184,7 @@ private MediaPlayer mediaPlayer;
  }
  
  @FXML
- private void stopAction(ActionEvent event)
+ public void stopAction(ActionEvent event)
  {
      if(mediaPlayer != null)
      {
@@ -171,7 +193,7 @@ private MediaPlayer mediaPlayer;
  }
  
  @FXML
- private void resetAction(ActionEvent event)
+ public void resetAction(ActionEvent event)
  {
      if(mediaPlayer != null)
      {
@@ -180,25 +202,113 @@ private MediaPlayer mediaPlayer;
  }
  
 @FXML
-private void closeAction(Event event)
+public void closeAction(Event event)
  {
         System.exit(0);
  }
   
-private void endOfMediaAction() 
+public void endOfMediaAction() 
 {
         mediaPlayer.stop();
         mediaPlayer.seek(Duration.ZERO);
         
 }
+
+
     
 @FXML
-private void updateAction(double timestamp, double duration, float[] magnitudes, float[] phases) 
+public void updateAction() 
    {
-        Duration ct = mediaPlayer.getCurrentTime();
-        double ms = ct.toMillis();
+       
    }
 
+@FXML
+public void onClickMercuryAction(ActionEvent event)
+{
+    
+}
+
+@FXML
+public void onClickVenusAction()
+{
+    
+}
+
+@FXML
+public void onClickEarthAction()
+{
+   
+}
+
+@FXML
+public void onClickMarsAction()
+{
+    
+}
+
+@FXML
+public void onClickJupiterAction()
+{
+    
+}
+
+@FXML
+public void onClickSaturnAction()
+{
+    
+}
+
+@FXML
+public void onClickUranusAction()
+{
+    
+}
+
+@FXML
+public void onClickNeptuneAction()
+{
+    
+}
+@FXML
+public void onClickHalfSpeedAction()
+{
+    
+}
+
+@FXML 
+public void onClickRegularSpeedAction()
+{
+    
+}
+
+@FXML
+public void onClickDoubleSpeedAction()
+{
+    
+}
+
+@FXML
+public void onClickFiveTimeSpeedAction()
+{
+    
+}
+
+@FXML
+public void setPlanetData(String orbitalPeriod, String orbitalSpeed, String mass,
+        String volume, String meanRadius, String surfaceGravity, String escapeVelocity,
+        String satelliteNumber, String planetDescription)
+{
+   
+ orbitalPeriodValueDisplay.setText(orbitalPeriod);
+ orbitalSpeedValueDisplay.setText(orbitalSpeed);
+ massValueDisplay.setText(mass);
+ volumeValueDisplay.setText(volume);
+ meanRadiusValueDisplay.setText(meanRadius);
+ surfaceGravityValueDisplay.setText(surfaceGravity);
+ escapeVelocityValueDisplay.setText(escapeVelocity);
+ satelliteNumberValueDisplay.setText(satelliteNumber);
+ planetDescriptionDisplay.setText(planetDescription);
+}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

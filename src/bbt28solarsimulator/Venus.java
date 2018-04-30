@@ -9,7 +9,13 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Venus {
+public class Venus implements Planet
+{
+
+    @Override
+    public void getPlanetData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 /*

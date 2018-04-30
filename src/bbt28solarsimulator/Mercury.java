@@ -9,8 +9,14 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Mercury 
+public class Mercury implements Planet
 {
+
+    @Override
+    public void getPlanetData() 
+    {
+        
+    }
     
 }
 /*

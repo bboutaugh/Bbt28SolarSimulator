@@ -20,8 +20,6 @@ package bbt28solarsimulator;
 //
 public interface Planet 
 {
-    public void startOrbit();
-    public void updateOrbit();
-    public void endOrbit();
+
     public void getPlanetData();
 }

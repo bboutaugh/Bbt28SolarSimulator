@@ -5,12 +5,55 @@
  */
 package bbt28solarsimulator;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  *
  * @author Brad
  */
-public class Earth 
+public class Earth implements Planet 
 {
+    
+private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+FXMLDocumentController controller = new FXMLDocumentController();
+
+
+
+    @Override
+    public void getPlanetData()
+    {
+        
+
+      
+/*  
+      
+        //Bbt28mvcstopwatchController.handleUpdate(rotation);
+        //firePropertyChange("analog", null, rotation); 
+        
+}
+
+public void propertyChange(PropertyChangeEvent event)
+{
+if(event.getPropertyName().equals("identifier")
+{
+handImage.setRotate((double)event.getNewValue());
+//viewObject.method((CastType)event.getNewValue());
+}
+else if (event.getPropertyName().equals("identifer2"))
+{
+textStatus.setText((String)event.getNewValue());
+}
+}
+
+*/
+    }
+    
+     public void addPropertyChangeListener(PropertyChangeListener listener) 
+     {
+        pcs.addPropertyChangeListener(listener);
+    }
     
 }
 

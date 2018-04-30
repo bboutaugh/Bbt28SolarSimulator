@@ -9,7 +9,12 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Mars {
+public class Mars implements Planet{
+
+    @Override
+    public void getPlanetData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
 /*
