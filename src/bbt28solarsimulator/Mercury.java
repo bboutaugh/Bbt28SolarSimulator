@@ -28,7 +28,7 @@ FXMLDocumentController controller = new FXMLDocumentController();
     @Override
     public void getPlanetData() 
     {
-        
+       
     }
     
 }

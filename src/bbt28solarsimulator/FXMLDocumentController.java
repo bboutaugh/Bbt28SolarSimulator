@@ -7,6 +7,7 @@ package bbt28solarsimulator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -34,10 +36,11 @@ import javafx.util.Duration;
  *
  * @author Brad
  */
-public class FXMLDocumentController implements Initializable 
+public class FXMLDocumentController extends ChangeScene implements Initializable, PropertyChangeListener
 {
     Mercury mercury;
     Earth earth = new Earth();
+    String orbitVelocity = "Not the value you are looking for";
 
 //Buttons
 @FXML
@@ -57,23 +60,7 @@ HBox buttonsHBox;
 @FXML
 VBox infoVBox;
 @FXML
-StackPane sunStackPane;
-@FXML
-StackPane mercuryStackPane;
-@FXML
-StackPane venusStackPane;
-@FXML
-StackPane earthPane;
-@FXML
-StackPane marsStackPane;
-@FXML
-StackPane jupiterStackPane;
-@FXML
-StackPane saturnStackPane;
-@FXML
-StackPane uranusStackPane;
-@FXML
-StackPane neptuneStackPane;
+Pane solarPane;
 
 //Other UI Elements
 MediaView mediaView;
@@ -97,6 +84,16 @@ Label escapeVelocityValueDisplay;
 Label satelliteNumberValueDisplay;
 @FXML
 TextArea planetDescriptionDisplay;
+
+String mercuryArray[] = new String[9];
+String venusArray[] = new String[9];
+String earthArray[] = new String[9];
+String marsArray[] = new String [9];
+String jupiterArray[] = new String[9];
+String saturnArray[] = new String[9];
+String uranusArray[] = new String[9];
+String neptuneArray[] = new String[9];
+
 
 //Menu Bar UI Elements
 @FXML
@@ -137,10 +134,6 @@ MenuItem uranusMenuItem;
 @FXML
 MenuItem neptuneMenuItem;
 @FXML
-MenuItem topDownViewMenuItem;
-@FXML
-MenuItem isometricViewMenuItem;
-@FXML
 MenuItem applicationInfoMenuItem;
 @FXML
 MenuItem referencesMenuItem;
@@ -153,6 +146,7 @@ MenuItem doubleSpeedMenuItem;
 @FXML
 MenuItem fiveTimesSpeedMenuItem;
 
+//Shapes
 @FXML
 Circle sunCircle;
 @FXML
@@ -172,19 +166,46 @@ Circle uranusCircle;
 @FXML
 Circle neptuneCircle;
 
-
 private Media media;
 private MediaPlayer mediaPlayer;
+Orbit orbit;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+{ 
+        orbit = new Orbit();
+        orbit.addPropertyChangeListener(this);
+        orbit.setupOrbitTime();
+        orbit.updateOrbit();
+        
+    }
+    
+      @Override
+    public void propertyChange(PropertyChangeEvent evt) 
+    {
+        orbitVelocity = ((String)evt.getNewValue());
+        
+    } 
+    
 
 //Button Actions
  @FXML
  public void goAction(ActionEvent event)
  {
-     if(mediaPlayer != null)
+    /* if(mediaPlayer != null)
      {
          mediaPlayer.play();
      }
+     orbit.orbitalTimeline.play();*/
+   //orbitalSpeedValueDisplay.setText((String)evt.getNewValue());
+    orbitalSpeedValueDisplay.setText(orbitVelocity);
+     
+   //set label text to new global \variable
  }
+ //use to change a global variable
+
+
  
  @FXML
  public void stopAction(ActionEvent event)
@@ -193,6 +214,7 @@ private MediaPlayer mediaPlayer;
      {
          mediaPlayer.pause();
      }
+     orbit.orbitalTimeline.stop();
  }
  
  @FXML
@@ -217,7 +239,12 @@ public void endOfMediaAction()
         
 }
 
-
+   
+@FXML
+private void goToAbout(ActionEvent event) 
+{
+        ChangeScene.switchTo("AboutController"); 
+}
     
 @FXML
 public void updateAction() 
@@ -240,55 +267,7 @@ public void onClickVenusAction()
 @FXML
 public void onClickEarthAction()
 {
-   public void setPlanetData(String orbitalPeriod, String orbitalSpeed, String mass,
-           String volume, String meanRadius, String surfaceGravity, String escapeVelocity,
-        String satelliteNumber, String planetDescription)
-{
-earth.addPropertyChangeListener(new PropertyChangeListener()
-{
- public void propertyChange(PropertyChangeEvent event)
-{
-if(event.getPropertyName().equals("identifier"))
-{
- orbitalPeriodValueDisplay.setText((String)event.getNewValue());   
-}
-
-if(event.getPropertyName().equals("identifier"))
-{
-  orbitalSpeedValueDisplay.setText((String)event.getNewValue());  
-}
-
-if(event.getPropertyName().equals("identifier"))
-{
-  massValueDisplay.setText((String)event.getNewValue());   
-}
-if(event.getPropertyName().equals("identifier"))
-{
-  volumeValueDisplay.setText((String)event.getNewValue());  
-}
-
-if(event.getPropertyName().equals("identifier"))
-{
-  meanRadiusValueDisplay.setText((String)event.getNewValue());   
-}
  
-if(event.getPropertyName().equals("identifier"))
-{
-  surfaceGravityValueDisplay.setText((String)event.getNewValue()); 
-}
- if(event.getPropertyName().equals("identifier"))
-{
-   escapeVelocityValueDisplay.setText((String)event.getNewValue());  
-}
-if(event.getPropertyName().equals("identifier"))
-{
-  satelliteNumberValueDisplay.setText((String)event.getNewValue());   
-}
-if(event.getPropertyName().equals("identifier"))
-{
-  planetDescriptionDisplay.setText((String)event.getNewValue());
-}
-}});
 }                                                                     
 
 @FXML
@@ -343,11 +322,8 @@ public void onClickFiveTimeSpeedAction()
 {
     
 }
+    
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-{
-        // TODO
-    }    
+   
     
 }

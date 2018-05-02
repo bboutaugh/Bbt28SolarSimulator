@@ -52,7 +52,7 @@
             </Menu>
             <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
               <items>
-                <MenuItem fx:id="applicationInfoMenuItem" mnemonicParsing="false" text="Application Info" />
+                <MenuItem fx:id="applicationInfoMenuItem" mnemonicParsing="false" onAction="#goToAbout" text="Application Info" />
                   <MenuItem fx:id="referencesMenuItem" mnemonicParsing="false" text="References" />
               </items>
             </Menu>
@@ -135,7 +135,7 @@
                   <Label layoutX="10.0" layoutY="10.0" text="Orbital Period:" />
                   <Label fx:id="orbitalPeriodValueDisplay" layoutX="10.0" layoutY="27.0" minWidth="25.0" />
                   <Label layoutX="10.0" layoutY="44.0" text="Orbital Speed:" />
-                  <Label fx:id="orbitalSpeedValueDisplay" layoutX="10.0" layoutY="61.0" minWidth="25.0" />
+                  <Label fx:id="orbitalSpeedValueDisplay" layoutX="10.0" layoutY="61.0" minWidth="25.0" prefHeight="17.0" prefWidth="126.0" />
                   <Label layoutX="10.0" layoutY="78.0" text="Mass:" />
                   <Label fx:id="massValueDisplay" layoutX="10.0" layoutY="95.0" minWidth="25.0" />
                   <Label layoutX="10.0" layoutY="112.0" text="Volume:" />
@@ -156,50 +156,23 @@
                   <TextArea fx:id="planetDescriptionDisplay" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
-            <StackPane fx:id="sunStackPane" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane fx:id="solarPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Circle fx:id="sunCircle" fill="#ffe100" radius="70.0" stroke="BLACK" strokeType="INSIDE" />
-                  <StackPane fx:id="mercuryStackPane" prefHeight="150.0" prefWidth="200.0">
-                     <children>
-                        <Circle fx:id="mercuryCircle" centerY="75.0" fill="#949494" radius="0.25" stroke="BLACK" strokeType="INSIDE" />
-                        <StackPane fx:id="venusStackPane" prefHeight="150.0" prefWidth="200.0">
-                           <children>
-                              <Circle fx:id="venusCircle" centerY="80.0" fill="#bec996" radius="0.6" stroke="BLACK" strokeType="INSIDE" />
-                              <StackPane fx:id="earthStackPane" prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Circle fx:id="earchCircle" centerY="85.0" fill="#60cc96" radius="0.64" stroke="BLACK" strokeType="INSIDE" />
-                                    <StackPane fx:id="marsStackPane" prefHeight="150.0" prefWidth="200.0">
-                                       <children>
-                                          <Circle fx:id="marsCircle" centerY="90.0" fill="#ff281f" radius="0.34" stroke="BLACK" strokeType="INSIDE" />
-                                          <StackPane fx:id="jupiterStackPane" prefHeight="150.0" prefWidth="200.0">
-                                             <children>
-                                                <Circle fx:id="jupiterCircle" centerY="95.0" fill="#ff9d1f" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-                                                <StackPane fx:id="saturnStackPane" prefHeight="150.0" prefWidth="200.0">
-                                                   <children>
-                                                      <Circle fx:id="saturnCircle" centerY="100.0" fill="#cfff1f" radius="5.8" stroke="BLACK" strokeType="INSIDE" />
-                                                      <StackPane fx:id="uranusStackPane" prefHeight="150.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Circle fx:id="uranusCircle" centerY="105.0" fill="#b8c6d3" radius="2.5" stroke="BLACK" strokeType="INSIDE" />
-                                                            <StackPane fx:id="neptuneStackPane" prefHeight="150.0" prefWidth="200.0">
-                                                               <children>
-                                                                  <Circle fx:id="neptuneCircle" centerY="110.0" fill="#2621c2" radius="2.4" stroke="BLACK" strokeType="INSIDE" />
-                                                               </children></StackPane>
-                                                         </children>
-                                                      </StackPane>
-                                                   </children>
-                                                </StackPane>
-                                             </children>
-                                          </StackPane>
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </StackPane>
-                     </children>
-                  </StackPane>
+                  <Circle fx:id="sunCircle" fill="#ffd22f" layoutX="347.0" layoutY="238.0" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Circle>
+                  <Circle fx:id="mercuryCircle" fill="#49494a" layoutX="262.0" layoutY="247.0" radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="venusCircle" fill="#e0f2be" layoutX="242.0" layoutY="249.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="earthCircle" fill="DODGERBLUE" layoutX="217.0" layoutY="249.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="marsCircle" fill="#ff371f" layoutX="193.0" layoutY="249.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="jupiterCircle" fill="#ff8a1f" layoutX="146.0" layoutY="245.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="saturnCircle" fill="#d3da00" layoutX="81.0" layoutY="247.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="uranusCircle" fill="#b2f8f8" layoutX="34.0" layoutY="247.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="neptuneCircle" fill="#000361" layoutX="650.0" layoutY="249.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
-            </StackPane>
+            </Pane>
          </children>
       </GridPane>
    </children>

@@ -21,13 +21,12 @@ import java.beans.PropertyChangeSupport;
 //a = semi-major axis along x-axis
 //b = semi-major axis along y-axis
 //
-public class Earth implements Planet 
+public class Earth extends AbstractModel implements Planet 
 {
     public void Earth()
     {
     }
 private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-FXMLDocumentController controller = new FXMLDocumentController();
 
 double eccentricAnamoly;
 double eccentricity;
@@ -45,17 +44,18 @@ String surfaceGravity = "9.81 m/s^2";
 String escapeVelocity = "40,284 km/h";
 String numberOfSatellites = "1";
 String planetDescription = "Third planet from the sun. Aside from being the only "
-        + "known body in the Solar System currently supporting life, Earth is also"
+        + "known body in the Solar System to currently support life, Earth is also"
         + " one of only two bodies,the other being the moon Titan, to support stable "
         + "bodies of surface liquid. All of this made possible with the assistance"
-        + " of a strong nitrogen-oxygen atmosphere shielding the planet.";
+        + " of a strong magnetosphere and nitrogen-oxygen atmosphere shielding "
+        + "the planet.";
         
     
     public void getPlanetData()
     {
       
       //  controller.setPlanetData();
-        pcs.firePropertyChange("", null, planetDescription); 
+        pcs.firePropertyChange("planetDescription", null, planetDescription); 
         
     }
     

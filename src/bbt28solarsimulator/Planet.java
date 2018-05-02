@@ -17,7 +17,14 @@ package bbt28solarsimulator;
 //e = eccentricity
 //a = semi-major axis along x-axis
 //b = semi-major axis along y-axis
+//T = orbitalPeriod
 //
+
+
+/*
+x = acos((2pi(t - t_0)/T)
+y = asin((2pi(t - t_0)/T)
+*/
 public interface Planet 
 {
 

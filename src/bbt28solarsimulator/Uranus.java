@@ -11,6 +11,18 @@ package bbt28solarsimulator;
  */
 public class Uranus implements Planet
 {
+String orbitalPeriod =  "30,660 Earth days (84 Earth years)";
+String orbitalVelocity = "24,477 km/";
+String mass = "8.68*10^25 kg";
+String volume = "6.83*10^13 km^3";
+String equatorialRadius = "25,362 km";
+String surfaceGravity = "8.87 m/s^2";
+String escapeVelocity = "76,968 km/h";
+String numberOfSatellites = "27";
+String planetDescription = "Seventh planet from the sun. As the name Uranus has been the "
++"subject of jokes, the planet's composition of methane and ammonia actually would produce what "
++"is potentially the most foul odor in the system. It also stands unique as being "
++"the only planet to rotate on its side within the Solar System.";
 
     @Override
     public void getPlanetData() {
