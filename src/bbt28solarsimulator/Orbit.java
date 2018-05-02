@@ -49,7 +49,6 @@ public class Orbit extends AbstractModel
     public void updateOrbit()//Enacts Planet motion around orbit
     {
        String oldValue = value;
-       value = "1000";
        firePropertyChange("orbitVelocity",oldValue,value);
         secondsElapsed += timeInSeconds;
         System.out.println("count");
@@ -61,13 +60,14 @@ public class Orbit extends AbstractModel
         
     }
     
-    public void setupOrbitTime()
+   public void setupOrbitTime()
 {
        orbitalKeyFrame = new KeyFrame(Duration.millis(timeInSeconds * 1000), (ActionEvent event) -> {
             updateOrbit();
         });
         orbitalTimeline = new Timeline(orbitalKeyFrame);
         orbitalTimeline.setCycleCount(Animation.INDEFINITE);  
+     
 }
     
     public boolean isOrbitRunning()

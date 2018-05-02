@@ -9,7 +9,7 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Mars implements Planet
+public class Mars extends AbstractModel implements Planet
 {
 String orbitalPeriod = "687 Earth days";
 String orbitalVelocity = "86,677 km/h";
@@ -24,8 +24,18 @@ String planetDescription = "Fourth planet from the sun. The planet's red hue com
 +"the planet may have had oceans in its ancient history.";
 
     @Override
-    public void getPlanetData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void getPlanetData() 
+    {
+       String oldValue = ""; 
+       firePropertyChange("orbitalPeriod",oldValue,orbitalPeriod);
+       firePropertyChange("orbitalVelocity",oldValue,orbitalVelocity);
+       firePropertyChange("mass",oldValue,mass);
+       firePropertyChange("volume",oldValue,volume);
+       firePropertyChange("meanRadius",oldValue,meanRadius);
+       firePropertyChange("surfaceGravity",oldValue,surfaceGravity);
+       firePropertyChange("escapeVelocity",oldValue,escapeVelocity);
+       firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
+       firePropertyChange("planetDescription",oldValue,planetDescription);
     }
     
 }

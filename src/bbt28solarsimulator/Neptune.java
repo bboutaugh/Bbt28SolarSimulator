@@ -9,7 +9,7 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Neptune implements Planet
+public class Neptune extends AbstractModel implements Planet
 {
 String orbitalPeriod = "60,225 Earth days (165 Earth Years)";
 String orbitalVelocity = "19,566 km/h";
@@ -25,8 +25,18 @@ String planetDescription = "Eighth and farthest planet from the sun. Like Uranus
 + "2000 km/hr.";
 
     @Override
-    public void getPlanetData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void getPlanetData() 
+    {
+       String oldValue = ""; 
+       firePropertyChange("orbitalPeriod",oldValue,orbitalPeriod);
+       firePropertyChange("orbitalVelocity",oldValue,orbitalVelocity);
+       firePropertyChange("mass",oldValue,mass);
+       firePropertyChange("volume",oldValue,volume);
+       firePropertyChange("meanRadius",oldValue,meanRadius);
+       firePropertyChange("surfaceGravity",oldValue,surfaceGravity);
+       firePropertyChange("escapeVelocity",oldValue,escapeVelocity);
+       firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
+       firePropertyChange("planetDescription",oldValue,planetDescription);
     }
     
 }

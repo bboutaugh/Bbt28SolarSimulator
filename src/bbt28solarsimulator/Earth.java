@@ -51,19 +51,22 @@ String planetDescription = "Third planet from the sun. Aside from being the only
         + "the planet.";
         
     
+    @Override
     public void getPlanetData()
     {
       
-      //  controller.setPlanetData();
-        pcs.firePropertyChange("planetDescription", null, planetDescription); 
+       String oldValue = ""; 
+       firePropertyChange("orbitalPeriod",oldValue,orbitalPeriod);
+       firePropertyChange("orbitalVelocity",oldValue,orbitalVelocity);
+       firePropertyChange("mass",oldValue,mass);
+       firePropertyChange("volume",oldValue,volume);
+       firePropertyChange("meanRadius",oldValue,meanRadius);
+       firePropertyChange("surfaceGravity",oldValue,surfaceGravity);
+       firePropertyChange("escapeVelocity",oldValue,escapeVelocity);
+       firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
+       firePropertyChange("planetDescription",oldValue,planetDescription);
         
     }
-    
-     public void addPropertyChangeListener(PropertyChangeListener listener) 
-     {
-        pcs.addPropertyChangeListener(listener);
-    }
-    
 }
 
 /*

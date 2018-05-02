@@ -9,7 +9,7 @@ package bbt28solarsimulator;
  *
  * @author Brad
  */
-public class Jupiter implements Planet
+public class Jupiter extends AbstractModel implements Planet
 {
         
 String orbitalPeriod = "4,380 Earth days";
@@ -26,8 +26,18 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
 + "asteroids/meteorites coming with a potential path to Earth. Its largest hurricane, known as the "
 + "\"Great Red Spot\" is the largest in the system with capacity to fit two Earths.";
     @Override
-    public void getPlanetData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void getPlanetData() 
+    {
+       String oldValue = ""; 
+       firePropertyChange("orbitalPeriod",oldValue,orbitalPeriod);
+       firePropertyChange("orbitalVelocity",oldValue,orbitalVelocity);
+       firePropertyChange("mass",oldValue,mass);
+       firePropertyChange("volume",oldValue,volume);
+       firePropertyChange("meanRadius",oldValue,meanRadius);
+       firePropertyChange("surfaceGravity",oldValue,surfaceGravity);
+       firePropertyChange("escapeVelocity",oldValue,escapeVelocity);
+       firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
+       firePropertyChange("planetDescription",oldValue,planetDescription);
     }
     
 }
