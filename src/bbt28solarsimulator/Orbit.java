@@ -39,8 +39,8 @@ y = asin((2pi(t - t_0)/T)
     private boolean orbitIsRunning = false;
     public Timeline orbitalTimeline;
     public KeyFrame orbitalKeyFrame;
-    private double planetXPosition = 0;
-    private double planetYPosition = 0;
+    private double planetXPosition = 0.0;
+    private double planetYPosition = 0.0;
  
     Mercury mercury;
     Venus venus;
@@ -51,19 +51,31 @@ y = asin((2pi(t - t_0)/T)
     Uranus uranus;
     Neptune neptune;
     
+    public void setMars(Mars mars) {
+        this.mars = mars;
+    }
+  
+           
     
     public void startOrbit()//Creates the Planet and sets its initial position
     {
         
     }
-            
+        
+public void setPlanetYPosition(double planetYPosition)
+{
+   this.planetYPosition = planetYPosition;
+}
+public void setPlanetXPosition(double planetXPosition)
+{
+   this.planetXPosition = planetXPosition;
+}
     public void updateOrbit()//Enacts Planet motion around orbit
     {
     secondsElapsed += timeInSeconds;    
-    mars.getPlanetXCoord(secondsElapsed, 0);
-    mars.getPlanetYCoord(secondsElapsed, 0);
-    
-        
+    mars.getPlanetXCoord(secondsElapsed, planetXPosition);
+    mars.getPlanetYCoord(secondsElapsed, planetYPosition);
+
     }
     
     public void endOrbit()
@@ -75,6 +87,7 @@ y = asin((2pi(t - t_0)/T)
 {
        orbitalKeyFrame = new KeyFrame(Duration.millis(timeInSeconds * 1000), (ActionEvent event) -> {
             updateOrbit();
+            
         });
         orbitalTimeline = new Timeline(orbitalKeyFrame);
         orbitalTimeline.setCycleCount(Animation.INDEFINITE);  

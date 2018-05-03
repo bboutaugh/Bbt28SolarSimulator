@@ -8,6 +8,11 @@ package bbt28solarsimulator;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,6 +36,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -184,7 +190,8 @@ Saturn saturn;
 Uranus uranus;
 Neptune neptune;
 
-
+double xCoordinate;
+double yCoordinate;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -192,14 +199,14 @@ Neptune neptune;
         orbit = new Orbit();
         orbit.addPropertyChangeListener(this);
         orbit.setupOrbitTime();
-//        orbit.updateOrbit(); 
+        //orbit.updateOrbit(); 
         mercury = new Mercury();
         mercury.addPropertyChangeListener(this);
         venus = new Venus();
         venus.addPropertyChangeListener(this);
         earth = new Earth();
         earth.addPropertyChangeListener(this);
-        mars = new Mars();
+        mars = new Mars(orbit);
         mars.addPropertyChangeListener(this);
         jupiter = new Jupiter();
         jupiter.addPropertyChangeListener(this);
@@ -209,7 +216,7 @@ Neptune neptune;
         uranus.addPropertyChangeListener(this);
         neptune = new Neptune();
         neptune.addPropertyChangeListener(this);
-         
+        orbit.setMars(mars);
     }
     
     private void start(Stage stage)
@@ -258,7 +265,21 @@ Neptune neptune;
         {
         planetArray[8]  = (String)evt.getNewValue();
         }
-        
+       if(evt.getPropertyName().equals("xCoord"))
+       {
+           xCoordinate = (Double)evt.getNewValue();
+           marsCircle.setCenterX(xCoordinate);
+           System.out.println(xCoordinate);
+  
+       }
+       if(evt.getPropertyName().equals("yCoord"))
+       {
+           yCoordinate = (Double)evt.getNewValue();
+           marsCircle.setCenterY(yCoordinate);
+
+
+       }
+       
     }
 
 
@@ -268,6 +289,7 @@ Neptune neptune;
  {
     
      orbit.orbitalTimeline.play();
+   
   
  }
  //use to change a global variable
@@ -277,20 +299,13 @@ Neptune neptune;
  @FXML
  public void stopAction(ActionEvent event)
  {
-     if(mediaPlayer != null)
-     {
-         mediaPlayer.pause();
-     }
      orbit.orbitalTimeline.stop();
  }
  
  @FXML
  public void resetAction(ActionEvent event)
  {
-     if(mediaPlayer != null)
-     {
-         mediaPlayer.stop();
-     }
+   orbit.orbitalTimeline.stop();
  }
  
 @FXML
@@ -310,10 +325,7 @@ public void endOfMediaAction()
 @FXML
 private void goToAbout(ActionEvent event) 
 {
-    AboutController controller = (AboutController) getControllerByName("About");
-    ChangeScene.switchTo("About"); 
-    //stage.setScene(aboutScene);
-       
+    ChangeScene.switchTo("About");     
 }
     
 @FXML
@@ -373,7 +385,7 @@ public void onClickEarthAction()
         earthArray[i] = planetArray[i];
     }
         
-    orbitalPeriodValueDisplay.setText(earthArray[0]);
+ orbitalPeriodValueDisplay.setText(earthArray[0]);
 orbitalSpeedValueDisplay.setText(earthArray[1]);
 massValueDisplay.setText(earthArray[2]);
 volumeValueDisplay.setText(earthArray[3]);
@@ -512,8 +524,40 @@ public void onClickFiveTimeSpeedAction()
 {
     
 }
-    
+
+//Save and Open Methods
+  /*@FXML
+    public void handleSave(ActionEvent event) {
+        person = createPersonFromFormData(); 
+        
+        if(person == null){
+            return; 
+        }
+        
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(stage);
+        if (file != null) {
+            
+            try {
+                FileOutputStream fileOut = new FileOutputStream(file.getPath());
+                ObjectOutputStream out = new ObjectOutputStream(fileOut); 
+                
+                out.writeObject(person);
+                out.close(); 
+                fileOut.close(); 
+                
+            } catch (FileNotFoundException ex) {
+                String message = "File not found exception occured while saving to " + file.getPath(); 
+                displayExceptionAlert(message, ex); 
+                
+            } catch (IOException ex) {
+                String message = "IOException occured while saving to " + file.getPath();
+                displayExceptionAlert(message, ex);
+                
+            }
+        }        
+    }*/
 
    
     
-}
+}//End Controller Class

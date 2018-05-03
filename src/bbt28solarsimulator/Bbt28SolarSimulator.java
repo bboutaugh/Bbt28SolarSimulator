@@ -23,13 +23,14 @@ public class Bbt28SolarSimulator extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-       Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-    
+       HBox root = new HBox();
+       //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+     
        Scene scene = new Scene(root);
          ChangeScene.scene = scene;
-        ChangeScene.switchTo("About");
+        ChangeScene.switchTo("FXMLDocument");
        stage.setScene(scene);
-stage.show();
+       stage.show();
         
        // FXMLDocumentController.start(stage);
     }

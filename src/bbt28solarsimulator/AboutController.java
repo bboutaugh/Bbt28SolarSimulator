@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -25,9 +26,11 @@ public class AboutController extends ChangeScene implements Initializable
     /**
      * Initializes the controller class.
      */
+    @FXML
+    AnchorPane aboutAnchorPane;
     
     @FXML
-    AnchorPane aboutPane;
+    ScrollPane aboutPane;
     
     @FXML
     Button backButton;
@@ -44,6 +47,6 @@ public class AboutController extends ChangeScene implements Initializable
        
     @FXML
     private void goBack(ActionEvent event) {
-        ChangeScene.switchTo("FXMLDocumentController"); 
+        ChangeScene.switchTo("FXMLDocument"); 
     }
 }

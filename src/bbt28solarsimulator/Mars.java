@@ -11,8 +11,14 @@ package bbt28solarsimulator;
  */
 public class Mars extends AbstractModel implements Planet
 {
-double xCoordinate;
-double yCoordinate;
+    Orbit orbit;
+
+    
+    
+     Mars(Orbit orbit)
+    {
+       this.orbit = orbit;
+    }
 
 double semiMajorAxis;
 double orbitalDuration;
@@ -28,6 +34,9 @@ String numberOfSatellites = "2";
 String planetDescription = "Fourth planet from the sun. The planet's red hue comes from"
 +"large deposits of oxidized iron on its surface. Ongoing research suggests that"
 +"the planet may have had oceans in its ancient history.";
+
+double d_XOldValue = 0;
+double d_YOldValue = 0;
 
     @Override
     public void getPlanetData() 
@@ -47,16 +56,25 @@ String planetDescription = "Fourth planet from the sun. The planet's red hue com
     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
+        
+        d_XOldValue = xCoord;
         semiMajorAxis = 228.0;
         orbitalDuration = 687.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*100)/orbitalDuration));
+//       xCoord += 1;
+        firePropertyChange("xCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
+        d_YOldValue = yCoord;
         semiMajorAxis = 228.0;
         orbitalDuration = 687.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*100)/orbitalDuration));
+//        yCoord += 1;
+        firePropertyChange("yCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
 }
 /*
