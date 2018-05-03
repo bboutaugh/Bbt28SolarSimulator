@@ -30,7 +30,7 @@ public abstract class ChangeScene {
         if(controller == null){
             try 
             {
-                FXMLLoader loader = new FXMLLoader(ChangeScene.class.getResource(name + " .fxml"));
+                FXMLLoader loader = new FXMLLoader(ChangeScene.class.getResource(name + ".fxml"));
                 Parent root = loader.load();
                 controller = loader.getController();
                 controller.setRoot(root);

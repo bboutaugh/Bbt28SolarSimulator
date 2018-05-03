@@ -30,15 +30,26 @@ public class Orbit extends AbstractModel
 //a = semi-major axis along x-axis
 //b = semi-major axis along y-axis
 //
-    
+/*
+x = acos((2pi(t - t_0)/T)
+y = asin((2pi(t - t_0)/T)
+*/    
     private double secondsElapsed = 0.0;
     private double timeInSeconds = 0.001;
     private boolean orbitIsRunning = false;
     public Timeline orbitalTimeline;
     public KeyFrame orbitalKeyFrame;
-    private double planetXPosition;
-    private double planetYPosition;
-    private String value;
+    private double planetXPosition = 0;
+    private double planetYPosition = 0;
+ 
+    Mercury mercury;
+    Venus venus;
+    Earth earth;
+    Mars mars;
+    Jupiter jupiter;
+    Saturn saturn;
+    Uranus uranus;
+    Neptune neptune;
     
     
     public void startOrbit()//Creates the Planet and sets its initial position
@@ -48,13 +59,13 @@ public class Orbit extends AbstractModel
             
     public void updateOrbit()//Enacts Planet motion around orbit
     {
-       String oldValue = value;
-       firePropertyChange("orbitVelocity",oldValue,value);
-        secondsElapsed += timeInSeconds;
-        System.out.println("count");
-        
+    secondsElapsed += timeInSeconds;    
+    mars.getPlanetXCoord(secondsElapsed, 0);
+    mars.getPlanetYCoord(secondsElapsed, 0);
+    
         
     }
+    
     public void endOrbit()
     {
         

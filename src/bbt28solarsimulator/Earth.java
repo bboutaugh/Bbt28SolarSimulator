@@ -26,7 +26,10 @@ public class Earth extends AbstractModel implements Planet
     public void Earth()
     {
     }
-private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    /*
+x = acos((2pi(t - t_0)/T)
+y = asin((2pi(t - t_0)/T)
+*/
 
 double eccentricAnamoly;
 double eccentricity;
@@ -34,6 +37,9 @@ double xAxis;
 double yAxis;
 double xCoordinate;
 double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
 
 String orbitalPeriod =  "365 Earth days";
 String orbitalVelocity =  "107,218 km/h";
@@ -67,9 +73,27 @@ String planetDescription = "Third planet from the sun. Aside from being the only
        firePropertyChange("planetDescription",oldValue,planetDescription);
         
     }
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 149.6;
+        orbitalDuration = 365.0;
+        xCoordinate = semiMajorAxis*Math.cos((time)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time, double yCoord) 
+    {
+        semiMajorAxis = 149.6;
+        orbitalDuration = 365.0;
+        yCoordinate = semiMajorAxis*Math.sin((time)/orbitalDuration);
+    }
+   
 }
 
 /*
+       semiMajorAxis = 149.6;
+        orbitalDuration = 365.0;
 Orbital Period: 365 Earth days
 Mean Orbital Velocity: 107,218 km/h
 Mass: 5.97*10^24 kg

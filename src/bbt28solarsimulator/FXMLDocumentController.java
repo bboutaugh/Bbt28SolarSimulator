@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -30,6 +31,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -39,7 +41,7 @@ import javafx.util.Duration;
 public class FXMLDocumentController extends ChangeScene implements Initializable, PropertyChangeListener
 {
     
-    String orbitVelocity = "Not the value you are looking for";
+  
 
 //Buttons
 @FXML
@@ -168,6 +170,9 @@ Circle neptuneCircle;
 
 private Media media;
 private MediaPlayer mediaPlayer;
+private Stage stage;
+AboutController aboutController;
+Scene aboutScene;
 
 Orbit orbit;
 Mercury mercury;
@@ -179,13 +184,15 @@ Saturn saturn;
 Uranus uranus;
 Neptune neptune;
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     { 
         orbit = new Orbit();
         orbit.addPropertyChangeListener(this);
         orbit.setupOrbitTime();
-        orbit.updateOrbit(); 
+//        orbit.updateOrbit(); 
         mercury = new Mercury();
         mercury.addPropertyChangeListener(this);
         venus = new Venus();
@@ -203,6 +210,11 @@ Neptune neptune;
         neptune = new Neptune();
         neptune.addPropertyChangeListener(this);
          
+    }
+    
+    private void start(Stage stage)
+    {
+        this.stage = stage;
     }
     
     @Override
@@ -248,32 +260,15 @@ Neptune neptune;
         }
         
     }
-    
-    /*for(int i = 0;i<planetArray.length-1;i++)
-    {
-        mercuryArray[i] = planetArray[i];
-        venusArray[i] = planetArray[i];
-        earthArray[i] = planetArray[i];
-        marsArray[i] = planetArray[i];
-        jupiterArray[i] = planetArray[i];
-        saturnArray[i] = planetArray[i];
-        uranusArray[i] = planetArray[i];
-        neptuneArray[i] = planetArray[i];
-    }*/
+
 
 //Button Actions
  @FXML
  public void goAction(ActionEvent event)
  {
-    /* if(mediaPlayer != null)
-     {
-         mediaPlayer.play();
-     }
-     orbit.orbitalTimeline.play();*/
-   //orbitalSpeedValueDisplay.setText((String)evt.getNewValue());
-    orbitalSpeedValueDisplay.setText(orbitVelocity);
-     
-   //set label text to new global \variable
+    
+     orbit.orbitalTimeline.play();
+  
  }
  //use to change a global variable
 
@@ -315,7 +310,10 @@ public void endOfMediaAction()
 @FXML
 private void goToAbout(ActionEvent event) 
 {
-        ChangeScene.switchTo("AboutController"); 
+    AboutController controller = (AboutController) getControllerByName("About");
+    ChangeScene.switchTo("About"); 
+    //stage.setScene(aboutScene);
+       
 }
     
 @FXML
@@ -329,7 +327,7 @@ public void onClickMercuryAction(ActionEvent event)
 {
     mercury.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         mercuryArray[i] = planetArray[i];
     }
@@ -350,7 +348,7 @@ planetDescriptionDisplay.setText(mercuryArray[8]);
 public void onClickVenusAction()
 {
     venus.getPlanetData();
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         venusArray[i] = planetArray[i];
     }
@@ -370,7 +368,7 @@ public void onClickEarthAction()
 {
     earth.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         earthArray[i] = planetArray[i];
     }
@@ -391,7 +389,7 @@ public void onClickMarsAction()
 {
     mars.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         marsArray[i] = planetArray[i];
     }
@@ -412,7 +410,7 @@ public void onClickJupiterAction()
 {
     jupiter.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         jupiterArray[i] = planetArray[i];
     }
@@ -433,7 +431,7 @@ public void onClickSaturnAction()
 {
 saturn.getPlanetData();
 
-    for(int i = 0;i<planetArray.length-1;i++)
+    for(int i = 0;i<planetArray.length;i++)
     {
         saturnArray[i] = planetArray[i];
     }
@@ -454,7 +452,7 @@ public void onClickUranusAction()
 {
     uranus.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         uranusArray[i] = planetArray[i];
     }
@@ -475,7 +473,7 @@ public void onClickNeptuneAction()
 {
     neptune.getPlanetData();
     
-        for(int i = 0;i<planetArray.length-1;i++)
+        for(int i = 0;i<planetArray.length;i++)
     {
         neptuneArray[i] = planetArray[i];
     }

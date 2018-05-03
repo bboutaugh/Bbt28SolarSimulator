@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Saturn extends AbstractModel implements Planet 
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
 String orbitalPeriod = "10,585 Earth days";
 String orbitalVelocity = "34,701 km/h";
 String mass = "5.68*10^26 kg";
@@ -37,10 +43,26 @@ String planetDescription = "Sixth planet from the sun. Other than being massive 
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
-    
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 1433.5;
+        orbitalDuration = 10585.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time,double yCoord) 
+    {
+        semiMajorAxis = 1433.5;
+        orbitalDuration = 10585.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
 }
 
 /*
+  semiMajorAxis = 1433.5;
+        orbitalDuration = 10585.0;
 Orbital Period: 10,585 Earth days
 Mean Orbital Velocity: 34,701 km/h
 Mass: 5.68*10^26 kg

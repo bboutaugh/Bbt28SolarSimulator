@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Neptune extends AbstractModel implements Planet
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
 String orbitalPeriod = "60,225 Earth days (165 Earth Years)";
 String orbitalVelocity = "19,566 km/h";
 String mass = "1.02*10^26 kg";
@@ -38,9 +44,26 @@ String planetDescription = "Eighth and farthest planet from the sun. Like Uranus
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 4500.0;
+        orbitalDuration = 60225.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time,double yCoord) 
+    {
+        semiMajorAxis = 4500.0;
+        orbitalDuration = 60225.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
     
 }
 /*
+ semiMajorAxis = 4500.0;
+        orbitalDuration = 60225.0;
 Orbital Period: 60,225 Earth days (165 Earth Years)
 Mean Orbital Velocity: 19,566 km/h
 Mass: 1.02*10^26 kg

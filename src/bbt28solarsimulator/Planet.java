@@ -29,4 +29,6 @@ public interface Planet
 {
 
     public void getPlanetData();
+    public void getPlanetXCoord(double time,double xCoord);
+    public void getPlanetYCoord(double time,double yCoord);
 }

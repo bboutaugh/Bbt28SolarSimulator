@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Uranus extends AbstractModel implements Planet
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
 String orbitalPeriod =  "30,660 Earth days (84 Earth years)";
 String orbitalVelocity = "24,477 km/";
 String mass = "8.68*10^25 kg";
@@ -38,10 +44,27 @@ String planetDescription = "Seventh planet from the sun. As the name Uranus has 
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);    
     }
+
+      @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis =2875.0;
+        orbitalDuration = 30660.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time,double yCoord) 
+    {
+        semiMajorAxis = 2875;
+        orbitalDuration = 30660.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
     
 }
 
 /*
+  semiMajorAxis = 2875;
+        orbitalDuration = 30660.0;
 Orbital Period: 30,660 Earth days (84 Earth years)
 Mean Orbital Velocity: 24,477 km/h
 Mass: 8.68*10^25 kg

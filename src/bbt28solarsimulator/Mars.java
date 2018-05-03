@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Mars extends AbstractModel implements Planet
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
 String orbitalPeriod = "687 Earth days";
 String orbitalVelocity = "86,677 km/h";
 String mass = "6.41*10^23 kg";
@@ -37,9 +43,25 @@ String planetDescription = "Fourth planet from the sun. The planet's red hue com
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
-    
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 228.0;
+        orbitalDuration = 687.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time, double yCoord) 
+    {
+        semiMajorAxis = 228.0;
+        orbitalDuration = 687.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
 }
 /*
+  semiMajorAxis = 228.0;
+        orbitalDuration = 687.0;
 Orbital Period: 687 Earth days
 Mean Orbital Velocity: 86,677 km/h
 Mass: 6.41*10^23 kg

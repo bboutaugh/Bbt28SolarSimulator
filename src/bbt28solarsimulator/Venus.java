@@ -11,9 +11,11 @@ package bbt28solarsimulator;
  */
 public class Venus extends AbstractModel implements Planet
 {
-double eccentricity = 0.006772;
-double eccentricAnamoly;
-double semiMajorAxis = 108.00;
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
     
 String orbitalPeriod = "225 Earth days";
 String orbitalVelocity = "126,074 km/h";
@@ -42,8 +44,25 @@ String planetDescription = "Second planet from the sun. Its proximity to the sun
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     } 
+
+     @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 108.0;
+        orbitalDuration = 225.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time, double yCoord) 
+    {
+        semiMajorAxis = 108.0;
+        orbitalDuration = 225.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
 }
 /*
+ semiMajorAxis = 108.00;
+        orbitalDuration = 225.0;
 Orbital Period: 225 Earth days
 Mean Orbital Velocity: 126,074 km/h
 Mass: 4.87 *10^24 kg

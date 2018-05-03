@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Jupiter extends AbstractModel implements Planet
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
         
 String orbitalPeriod = "4,380 Earth days";
 String orbitalVelocity = "47,002 km/h";
@@ -25,6 +31,7 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
 + "of large bodies through the system while also reducing the number of harmful "
 + "asteroids/meteorites coming with a potential path to Earth. Its largest hurricane, known as the "
 + "\"Great Red Spot\" is the largest in the system with capacity to fit two Earths.";
+
     @Override
     public void getPlanetData() 
     {
@@ -39,10 +46,27 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 778.6;
+        orbitalDuration = 4380.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time, double yCoord) 
+    {
+        semiMajorAxis = 778.6;
+        orbitalDuration = 4380.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
     
 }
 
 /*
+  semiMajorAxis = 778.6;
+        orbitalDuration = 4380.0;
 Orbital Period: 4,380 Earth days
 Mean Orbital Velocity: 47,002 km/h
 Mass: 1.9*10^27 kg

@@ -11,6 +11,12 @@ package bbt28solarsimulator;
  */
 public class Mercury extends AbstractModel implements Planet
 {
+double xCoordinate;
+double yCoordinate;
+
+double semiMajorAxis;
+double orbitalDuration;
+
  String orbitalPeriod = "88 Earth Days";
 String orbitalVelocity = "170,503 km/h"; 
 String mass = "3.3*10^23 kg";
@@ -37,9 +43,26 @@ String planetDescription = "First planet from the sun. It is the smallest planet
        firePropertyChange("numberOfSatellites",oldValue,numberOfSatellites);
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
+
+    @Override
+    public void getPlanetXCoord(double time,double xCoord) 
+    {
+        semiMajorAxis = 58.0;
+        orbitalDuration = 88.0;
+        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+    }
+    @Override
+        public void getPlanetYCoord(double time, double yCoord) 
+    {
+        semiMajorAxis = 58.0;
+        orbitalDuration = 88.0;
+        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+    }
     
 }
 /*
+  semiMajorAxis = 58.0;
+        orbitalDuration = 88.0;
 Orbital Period: 88 Earth days
 Mean Orbital Velocity: 170,503 km/h
 Mass: 3.3*10^23 kg
