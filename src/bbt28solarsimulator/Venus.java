@@ -11,6 +11,14 @@ package bbt28solarsimulator;
  */
 public class Venus extends AbstractModel implements Planet
 {
+    Orbit orbit;
+    Venus(Orbit orbit)
+    {
+        this.orbit = orbit;
+    }
+    
+    double d_XOldValue;
+    double d_YOldValue;
 double xCoordinate;
 double yCoordinate;
 
@@ -45,19 +53,26 @@ String planetDescription = "Second planet from the sun. Its proximity to the sun
        firePropertyChange("planetDescription",oldValue,planetDescription);
     } 
 
-     @Override
+    @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 108.0;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 54.0;
         orbitalDuration = 225.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("venusXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 108.0;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 54.0;
         orbitalDuration = 225.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("venusYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
 }
 /*

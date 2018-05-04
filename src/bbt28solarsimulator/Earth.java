@@ -13,8 +13,6 @@ import java.beans.PropertyChangeSupport;
  *
  * @author Brad
  */
-//x = a(cosE - e)
-//y = bsinE 
 
 //E = eccentric anamoly
 //e = eccentricity
@@ -23,13 +21,12 @@ import java.beans.PropertyChangeSupport;
 //
 public class Earth extends AbstractModel implements Planet 
 {
-    public void Earth()
+    Orbit orbit;
+    Earth(Orbit orbit)
     {
+        this.orbit = orbit;
     }
-    /*
-x = acos((2pi(t - t_0)/T)
-y = asin((2pi(t - t_0)/T)
-*/
+
 
 double eccentricAnamoly;
 double eccentricity;
@@ -40,6 +37,9 @@ double yCoordinate;
 
 double semiMajorAxis;
 double orbitalDuration;
+
+double d_YOldValue = 0;
+double d_XOldValue = 0;
 
 String orbitalPeriod =  "365 Earth days";
 String orbitalVelocity =  "107,218 km/h";
@@ -77,16 +77,23 @@ String planetDescription = "Third planet from the sun. Aside from being the only
     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 149.6;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 75;
         orbitalDuration = 365.0;
-        xCoordinate = semiMajorAxis*Math.cos((time)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("earthXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 149.6;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 75;
         orbitalDuration = 365.0;
-        yCoordinate = semiMajorAxis*Math.sin((time)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("earthYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
    
 }

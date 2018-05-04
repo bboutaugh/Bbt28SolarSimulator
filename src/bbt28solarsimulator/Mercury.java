@@ -11,6 +11,13 @@ package bbt28solarsimulator;
  */
 public class Mercury extends AbstractModel implements Planet
 {
+    Orbit orbit;
+    Mercury(Orbit orbit)
+    {
+        this.orbit = orbit;
+    }
+    double d_XOldValue;
+    double d_YOldValue;
 double xCoordinate;
 double yCoordinate;
 
@@ -44,19 +51,26 @@ String planetDescription = "First planet from the sun. It is the smallest planet
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
 
-    @Override
+     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 58.0;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 25.0;
         orbitalDuration = 88.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("mercuryXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 58.0;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 25.0;
         orbitalDuration = 88.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("mercuryYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
     
 }

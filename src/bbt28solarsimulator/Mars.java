@@ -58,22 +58,21 @@ double d_YOldValue = 0;
     {
         
         d_XOldValue = xCoord;
-        semiMajorAxis = 228.0;
+        semiMajorAxis = 85.0;
         orbitalDuration = 687.0;
-        xCoord = semiMajorAxis*(Math.cos((time*100)/orbitalDuration));
-//       xCoord += 1;
-        firePropertyChange("xCoord",d_XOldValue,xCoord);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("marsXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
+    
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
         d_YOldValue = yCoord;
-        semiMajorAxis = 228.0;
+        semiMajorAxis = 85.0;
         orbitalDuration = 687.0;
-        yCoord = semiMajorAxis*(Math.sin((time*100)/orbitalDuration));
-//        yCoord += 1;
-        firePropertyChange("yCoord",d_YOldValue,yCoord);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("marsYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }
 }

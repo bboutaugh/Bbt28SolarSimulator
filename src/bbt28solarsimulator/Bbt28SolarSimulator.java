@@ -31,7 +31,7 @@ public class Bbt28SolarSimulator extends Application {
         ChangeScene.switchTo("FXMLDocument");
        stage.setScene(scene);
        stage.show();
-        
+       
        // FXMLDocumentController.start(stage);
     }
 

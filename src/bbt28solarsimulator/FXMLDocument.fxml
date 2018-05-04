@@ -12,15 +12,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bbt28solarsimulator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bbt28solarsimulator.FXMLDocumentController">
    <children>
       <MenuBar fx:id="menuBar" layoutX="1.0" layoutY="2.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="900.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="goMenuItem" mnemonicParsing="false" text="Go" />
-                  <MenuItem fx:id="stopMenuItem" mnemonicParsing="false" text="Stop" />
-                  <MenuItem fx:id="resetMenuItem" mnemonicParsing="false" text="Reset" />
+              <MenuItem fx:id="goMenuItem" mnemonicParsing="false" onAction="#goAction" text="Go" />
+                  <MenuItem fx:id="stopMenuItem" mnemonicParsing="false" onAction="#stopAction" text="Stop" />
+                  <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveAction" text="Save" />
+                  <MenuItem fx:id="loadMenuItem" mnemonicParsing="false" onAction="#loadAction" text="Load" />
                   <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeAction" text="Close" />
             </items>
           </Menu>
@@ -44,21 +45,14 @@
                   <MenuItem fx:id="fiveTimesSpeedMenuItem" mnemonicParsing="false" onAction="#onClickFiveTimeSpeedAction" text="x 5.0" />
             </items>
           </Menu>
-            <Menu fx:id="menuView" mnemonicParsing="false" text="View">
-              <items>
-                <MenuItem fx:id="topDownViewMenuItem" mnemonicParsing="false" text="Top Down View" />
-                  <MenuItem fx:id="isometricViewMenuItem" mnemonicParsing="false" text="Isometric View" />
-              </items>
-            </Menu>
             <Menu fx:id="menuAbout" mnemonicParsing="false" text="About">
               <items>
                 <MenuItem fx:id="applicationInfoMenuItem" mnemonicParsing="false" onAction="#goToAbout" text="Application Info" />
-                  <MenuItem fx:id="referencesMenuItem" mnemonicParsing="false" text="References" />
+                  <MenuItem fx:id="referencesMenuItem" mnemonicParsing="false" onAction="#goToReferences" text="References" />
               </items>
             </Menu>
         </menus>
       </MenuBar>
-      <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="-112.0" layoutY="318.0" />
       <GridPane fx:id="gridPane" layoutX="14.0" layoutY="28.0" prefHeight="576.0" prefWidth="888.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
@@ -68,24 +62,53 @@
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="510.0" minHeight="10.0" prefHeight="506.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.0" minHeight="28.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox fx:id="buttonsHBox" prefHeight="52.0" prefWidth="381.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox fx:id="buttonsHBox" maxHeight="30.0" prefHeight="15.0" prefWidth="694.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goAction" prefHeight="50.0" prefWidth="100.0" text="Go">
+                  <Button fx:id="goButton" mnemonicParsing="false" onAction="#goAction" prefHeight="37.0" prefWidth="100.0" text="Go">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopAction" prefHeight="50.0" prefWidth="100.0" text="Stop">
+                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopAction" prefHeight="36.0" prefWidth="100.0" text="Stop">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetAction" prefHeight="50.0" prefWidth="100.0" text="Reset" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAction" prefHeight="36.0" prefWidth="100.0" text="Save" />
+                  <Label text="x position: ">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="80.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label text="0.0" fx:id="xPositionDisplay">
+                     <padding>
+                        <Insets right="40.0" top="10.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="y position: ">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="yPositionDisplay" text="0.0">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
             <VBox fx:id="infoVBox" prefHeight="777.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -127,19 +150,19 @@
             </VBox>
             <Pane fx:id="solarPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Circle fx:id="sunCircle" fill="#ffd22f" layoutX="347.0" layoutY="238.0" radius="10.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="sunCircle" fill="#ffd22f" layoutX="338.0" layoutY="238.0" radius="10.0" stroke="BLACK" strokeType="INSIDE">
                      <effect>
                         <Glow />
                      </effect>
                   </Circle>
-                  <Circle fx:id="mercuryCircle" fill="#49494a" layoutX="328.0" layoutY="238.0" onMouseClicked="#onClickMercuryAction" radius="2.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="venusCircle" fill="#e0f2be" layoutX="309.0" layoutY="238.0" radius="4.7" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="earthCircle" fill="DODGERBLUE" layoutX="283.0" layoutY="238.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="marsCircle" fill="#ff371f" layoutX="253.0" layoutY="238.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="jupiterCircle" fill="#ff8a1f" layoutX="205.0" layoutY="238.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="saturnCircle" fill="#d3da00" layoutX="138.0" layoutY="240.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="uranusCircle" fill="#b2f8f8" layoutX="81.0" layoutY="236.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="neptuneCircle" fill="#000361" layoutX="34.0" layoutY="240.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="mercuryCircle" fill="#49494a" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickMercuryAction" radius="2.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="venusCircle" fill="#e0f2be" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickVenusAction" radius="4.7" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="earthCircle" fill="DODGERBLUE" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickEarthAction" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="marsCircle" fill="#ff371f" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickMarsAction" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="jupiterCircle" fill="#ff8a1f" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickJupiterAction" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="saturnCircle" fill="#d3da00" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickSaturnAction" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="uranusCircle" fill="#b2f8f8" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickUranusAction" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="neptuneCircle" fill="#000361" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickNeptuneAction" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </Pane>
          </children>

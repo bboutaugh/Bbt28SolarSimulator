@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" fx:id="referencesAnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="bbt28solarsimulator.ReferencesController">
+   <children>
+      <Button fx:id="backButton" layoutX="90.0" layoutY="537.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="74.0" text="Back" />
+      <ScrollPane fx:id="referencesScrollPane" layoutX="21.0" layoutY="20.0" prefHeight="492.0" prefWidth="718.0">
+         <content>
+            <TextArea fx:id="textArea" prefHeight="524.0" prefWidth="697.0" text="References/Citations:&#10;&#10;https://solarsystem.nasa.gov/planets/overview/&#10;&#10;https://www.extremetech.com/extreme/268170-scientists-confirm-uranus-smells-terrible&#10;&#10;https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion&#10;&#10;http://nineplanets.org/&#10;" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

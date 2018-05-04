@@ -11,6 +11,13 @@ package bbt28solarsimulator;
  */
 public class Saturn extends AbstractModel implements Planet 
 {
+    Orbit orbit;
+    Saturn(Orbit orbit)
+    {
+        this.orbit = orbit;
+    }
+double d_XOldValue;
+double d_YOldValue;
 double xCoordinate;
 double yCoordinate;
 
@@ -47,16 +54,23 @@ String planetDescription = "Sixth planet from the sun. Other than being massive 
     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 1433.5;
-        orbitalDuration = 10585.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 170;
+        orbitalDuration = 10585;
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("saturnXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
-        public void getPlanetYCoord(double time,double yCoord) 
+        public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 1433.5;
-        orbitalDuration = 10585.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        d_YOldValue = yCoord;
+        semiMajorAxis = 170;
+        orbitalDuration = 10585;
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("saturnYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
 }
 

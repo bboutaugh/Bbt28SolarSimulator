@@ -11,6 +11,14 @@ package bbt28solarsimulator;
  */
 public class Uranus extends AbstractModel implements Planet
 {
+    Orbit orbit;
+    Uranus(Orbit orbit)
+    {
+        this.orbit = orbit;
+    }
+    
+double d_YOldValue;
+double d_XOldValue;
 double xCoordinate;
 double yCoordinate;
 
@@ -45,19 +53,26 @@ String planetDescription = "Seventh planet from the sun. As the name Uranus has 
        firePropertyChange("planetDescription",oldValue,planetDescription);    
     }
 
-      @Override
+        @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis =2875.0;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 200;
         orbitalDuration = 30660.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("uranusXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
-        public void getPlanetYCoord(double time,double yCoord) 
+        public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 2875;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 200;
         orbitalDuration = 30660.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("uranusYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
     
 }

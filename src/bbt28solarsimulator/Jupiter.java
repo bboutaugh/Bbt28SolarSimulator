@@ -11,13 +11,19 @@ package bbt28solarsimulator;
  */
 public class Jupiter extends AbstractModel implements Planet
 {
+    Orbit orbit;
+    Jupiter(Orbit orbit)
+    {
+    this.orbit = orbit;    
+    }
 double xCoordinate;
 double yCoordinate;
 
 double semiMajorAxis;
 double orbitalDuration;
 
-        
+ double d_XOldValue; 
+ double d_YOldValue;
 String orbitalPeriod = "4,380 Earth days";
 String orbitalVelocity = "47,002 km/h";
 String mass = "1.9*10^27 kg";
@@ -31,6 +37,8 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
 + "of large bodies through the system while also reducing the number of harmful "
 + "asteroids/meteorites coming with a potential path to Earth. Its largest hurricane, known as the "
 + "\"Great Red Spot\" is the largest in the system with capacity to fit two Earths.";
+
+
 
     @Override
     public void getPlanetData() 
@@ -50,16 +58,23 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 778.6;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 130;
         orbitalDuration = 4380.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("jupiterXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 778.6;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 130;
         orbitalDuration = 4380.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("jupiterYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
     
 }

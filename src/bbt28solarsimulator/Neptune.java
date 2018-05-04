@@ -11,11 +11,20 @@ package bbt28solarsimulator;
  */
 public class Neptune extends AbstractModel implements Planet
 {
+    Orbit orbit;
+    Neptune(Orbit orbit)
+    {
+        this.orbit = orbit;
+    }
+double d_XOldValue;
+double d_YOldValue;
 double xCoordinate;
 double yCoordinate;
 
 double semiMajorAxis;
 double orbitalDuration;
+
+
 
 String orbitalPeriod = "60,225 Earth days (165 Earth Years)";
 String orbitalVelocity = "19,566 km/h";
@@ -48,16 +57,23 @@ String planetDescription = "Eighth and farthest planet from the sun. Like Uranus
     @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
-        semiMajorAxis = 4500.0;
+        
+        d_XOldValue = xCoord;
+        semiMajorAxis = 230;
         orbitalDuration = 60225.0;
-        xCoordinate = semiMajorAxis*Math.cos((time*2*Math.PI)/orbitalDuration);
+        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        firePropertyChange("neptuneXCoord",d_XOldValue,xCoord);
+        orbit.setPlanetXPosition(xCoord);
     }
     @Override
-        public void getPlanetYCoord(double time,double yCoord) 
+        public void getPlanetYCoord(double time, double yCoord) 
     {
-        semiMajorAxis = 4500.0;
+        d_YOldValue = yCoord;
+        semiMajorAxis = 230;
         orbitalDuration = 60225.0;
-        yCoordinate = semiMajorAxis*Math.sin((time*2*Math.PI)/orbitalDuration);
+        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        firePropertyChange("neptuneYCoord",d_YOldValue,yCoord);
+        orbit.setPlanetYPosition(yCoord);
     }
     
 }

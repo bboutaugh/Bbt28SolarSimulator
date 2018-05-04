@@ -17,7 +17,8 @@ import javafx.scene.Scene;
  *
  * @author Brad
  */
-public abstract class ChangeScene {
+public abstract class ChangeScene 
+{
         public static Scene scene;
     public static final HashMap<String, ChangeScene> controllers = new HashMap<>();
     

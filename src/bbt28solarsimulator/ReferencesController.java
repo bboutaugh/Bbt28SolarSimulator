@@ -5,6 +5,7 @@
  */
 package bbt28solarsimulator;
 
+import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -14,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
@@ -24,35 +24,33 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Brad
  */
-public class AboutController extends ChangeScene implements Initializable 
-{
+public class ReferencesController extends ChangeScene implements Initializable {
 
     /**
      * Initializes the controller class.
      */
     @FXML
-    AnchorPane aboutAnchorPane;
-    
+    AnchorPane referencesAnchorPane;
     @FXML
-    ScrollPane aboutPane;
-    
+    ScrollPane referencesScrollPane;
     @FXML
     Button backButton;
-    
-    @FXML
-    Label aboutLabel;
-    
     @FXML
     TextArea textArea;
     
+private void propertyChange(PropertyChangeEvent event)
+{
+   if(event.getPropertyName().equals("newText"))
+        {
+        textArea.setText((String)event.getNewValue());  
+        }
+}
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
-   
-       
     @FXML
     private void goBack(ActionEvent event) {
         ChangeScene.switchTo("FXMLDocument"); 
