@@ -99,15 +99,15 @@ Label xPositionDisplay;
 @FXML
 Label yPositionDisplay;
 
-String mercuryArray[] = new String[9];
-String venusArray[] = new String[9];
-String earthArray[] = new String[9];
-String marsArray[] = new String [9];
-String jupiterArray[] = new String[9];
-String saturnArray[] = new String[9];
-String uranusArray[] = new String[9];
-String neptuneArray[] = new String[9];
-String planetArray[] = new String[9];
+private String mercuryArray[] = new String[9];
+private String venusArray[] = new String[9];
+private String earthArray[] = new String[9];
+private String marsArray[] = new String [9];
+private String jupiterArray[] = new String[9];
+private String saturnArray[] = new String[9];
+private String uranusArray[] = new String[9];
+private String neptuneArray[] = new String[9];
+private String planetArray[] = new String[9];
 
 
 
@@ -198,28 +198,29 @@ Saturn saturn;
 Uranus uranus;
 Neptune neptune;
 
-double mercuryXCoordinate;
-double mercuryYCoordinate;
-double venusXCoordinate;
-double venusYCoordinate;
-double earthXCoordinate;
-double earthYCoordinate;
-double marsXCoordinate;
-double marsYCoordinate;
-double jupiterXCoordinate;
-double jupiterYCoordinate;
-double saturnXCoordinate;
-double saturnYCoordinate;
-double uranusXCoordinate;
-double uranusYCoordinate;
-double neptuneXCoordinate;
-double neptuneYCoordinate;
+private double mercuryXCoordinate;
+private double mercuryYCoordinate;
+private double venusXCoordinate;
+private double venusYCoordinate;
+private double earthXCoordinate;
+private double earthYCoordinate;
+private double marsXCoordinate;
+private double marsYCoordinate;
+private double jupiterXCoordinate;
+private double jupiterYCoordinate;
+private double saturnXCoordinate;
+private double saturnYCoordinate;
+private double uranusXCoordinate;
+private double uranusYCoordinate;
+private double neptuneXCoordinate;
+private double neptuneYCoordinate;
 
     public FXMLDocumentController() {
         
     }
 
 OrbitalPositions orbitalPositions;
+private ArrayList<Double> al = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -244,7 +245,7 @@ OrbitalPositions orbitalPositions;
         uranus.addPropertyChangeListener(this);
         neptune = new Neptune(orbit);
         neptune.addPropertyChangeListener(this);
-        orbitalPositions = new OrbitalPositions();
+        orbitalPositions = new OrbitalPositions(al);
         
         orbit.setMars(mars);
         orbit.setEarth(earth);
@@ -321,13 +322,13 @@ OrbitalPositions orbitalPositions;
        {
            mercuryXCoordinate = (Double)evt.getNewValue();
            mercuryCircle.setCenterX(mercuryXCoordinate);
-           xPositionDisplay.setText(Double.toString(mercuryXCoordinate));
+           
        }
        if(evt.getPropertyName().equals("mercuryYCoord"))
        {
            mercuryYCoordinate = (Double)evt.getNewValue();
            mercuryCircle.setCenterY(mercuryYCoordinate);
-           yPositionDisplay.setText(Double.toString(mercuryYCoordinate));
+          
        }
        
        //Get Venus X and Y Coordinates
@@ -347,11 +348,15 @@ OrbitalPositions orbitalPositions;
        {
            earthXCoordinate = (Double)evt.getNewValue();
            earthCircle.setCenterX(earthXCoordinate);
+           orbitalPositions.setEarthXCoordinate(earthXCoordinate);
+         xPositionDisplay.setText(Double.toString(mercuryXCoordinate));
        }
        if(evt.getPropertyName().equals("earthYCoord"))
        {
            earthYCoordinate = (Double)evt.getNewValue();
            earthCircle.setCenterY(earthYCoordinate);
+           orbitalPositions.setEarthYCoordinate(earthYCoordinate);
+              yPositionDisplay.setText(Double.toString(mercuryYCoordinate));
        }
        
        //Get Jupiter X and Y Coordinates
@@ -635,8 +640,8 @@ public void onClickFiveTimeSpeedAction()
 //Save and Open Methods
   @FXML
     public void saveAction(ActionEvent event) 
-    {
-        orbitalPositions = saveCoordinates();
+    {System.out.println(Double.toString(earthXCoordinate));
+       orbitalPositions = saveCoordinates();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showSaveDialog(stage);
         if (file != null) {
@@ -646,6 +651,9 @@ public void onClickFiveTimeSpeedAction()
                 ObjectOutputStream out = new ObjectOutputStream(fileOut); 
                 
                 out.writeObject(orbitalPositions);//file class
+                out.writeChars("Earth X Coordinate " + Double.toString(earthXCoordinate) 
+                        + " Earth Y Coordinate: " + Double.toString(earthYCoordinate));
+                
                 out.close(); 
                 fileOut.close(); 
                 
@@ -677,7 +685,8 @@ public void onClickFiveTimeSpeedAction()
                 in.close(); 
                 fileIn.close(); 
                 updateCoordinates(orbitalPositions); 
-                
+                xPositionDisplay.setText(Double.toString(earthXCoordinate));
+                yPositionDisplay.setText(Double.toString(earthYCoordinate));
             } 
             catch (FileNotFoundException ex) 
             {
@@ -692,18 +701,35 @@ public void onClickFiveTimeSpeedAction()
         }
     }//End Load Action Method
     
+
+   
     private OrbitalPositions saveCoordinates()
     {
-        OrbitalPositions orbitalPositions = new OrbitalPositions();
-        orbitalPositions.setMercuryXCoordinate(mercuryXCoordinate);
-        orbitalPositions.setMercuryYCoordinate(mercuryYCoordinate);
-        return orbitalPositions;
+            OrbitalPositions ob = new OrbitalPositions(al);
+            al.set(0, mercuryXCoordinate);
+            al.set(1,mercuryYCoordinate);
+            al.set(2,venusXCoordinate);
+            al.set(3,venusYCoordinate);
+            al.set(4, earthXCoordinate);
+            al.set(5, earthYCoordinate);
+            al.set(6, marsXCoordinate);
+            al.set(7, marsYCoordinate);
+            al.set(8, jupiterXCoordinate);
+            al.set(9, jupiterYCoordinate);
+            al.set(10,saturnXCoordinate);
+            al.set(11,saturnYCoordinate);
+            al.set(12,uranusXCoordinate);
+            al.set(13,uranusYCoordinate);
+            al.set(14,neptuneXCoordinate);
+            al.set(15,neptuneYCoordinate);
+            return ob;
+        
     }
 
    
     private void updateCoordinates(OrbitalPositions orbitalPositions)
     {
-        mercuryXCoordinate = orbitalPositions.getMercuryXCoordinate();
-        mercuryYCoordinate = orbitalPositions.getMercuryYCoordinate();
+        earthXCoordinate = orbitalPositions.getEarthXCoordinate();
+        earthYCoordinate = orbitalPositions.getEarthYCoordinate();
     }
 }//End Controller Class

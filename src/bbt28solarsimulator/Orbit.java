@@ -45,7 +45,6 @@ y = asin((2pi(t - t_0)/T)
         this.timeInSeconds = timeInSeconds;
     }
     private double timeInSeconds = 0.001;
-    private boolean orbitIsRunning = false;
     public Timeline orbitalTimeline;
     public KeyFrame orbitalKeyFrame;
     private double planetXPosition = 0.0;
@@ -59,7 +58,7 @@ y = asin((2pi(t - t_0)/T)
     Saturn saturn;
     Uranus uranus;
     Neptune neptune;
-    Object planets[] = {mercury,venus,earth,mars,jupiter,saturn,uranus,neptune};
+    
     public void setMercury(Mercury mercury)
     {
         this.mercury = mercury;
@@ -97,11 +96,13 @@ public void setPlanetYPosition(double planetYPosition)
 {
    this.planetYPosition = planetYPosition;
 }
+
 public void setPlanetXPosition(double planetXPosition)
 {
    this.planetXPosition = planetXPosition;
 }
-    public void updateOrbit()//Enacts Planet motion around orbit
+
+public void updateOrbit()//Enacts Planet motion around orbit
     {
     secondsElapsed += timeInSeconds;    
     mercury.getPlanetXCoord(secondsElapsed, planetXPosition);
@@ -132,15 +133,5 @@ public void setPlanetXPosition(double planetXPosition)
         orbitalTimeline = new Timeline(orbitalKeyFrame);
         orbitalTimeline.setCycleCount(Animation.INDEFINITE);  
 }
-    
-    public boolean isOrbitRunning()
-    {
-        return orbitIsRunning;
-    }
-    
-    public void setOrbitRunning(boolean orbitIsRunning)
-    {
-        this.orbitIsRunning = orbitIsRunning;
-    }
     
 }

@@ -17,23 +17,23 @@ public class Uranus extends AbstractModel implements Planet
         this.orbit = orbit;
     }
     
-double d_YOldValue;
-double d_XOldValue;
-double xCoordinate;
-double yCoordinate;
+private double d_YOldValue;
+private double d_XOldValue;
+private double xCoordinate;
+private double yCoordinate;
 
-double semiMajorAxis;
-double orbitalDuration;
+private double semiMajorAxis;
+private double orbitalDuration;
 
-String orbitalPeriod =  "30,660 Earth days (84 Earth years)";
-String orbitalVelocity = "24,477 km/";
-String mass = "8.68*10^25 kg";
-String volume = "6.83*10^13 km^3";
-String meanRadius = "25,362 km";
-String surfaceGravity = "8.87 m/s^2";
-String escapeVelocity = "76,968 km/h";
-String numberOfSatellites = "27";
-String planetDescription = "Seventh planet from the sun. As the name Uranus has been the "
+private String orbitalPeriod =  "30,660 Earth days (84 Earth years)";
+private String orbitalVelocity = "24,477 km/";
+private String mass = "8.68*10^25 kg";
+private String volume = "6.83*10^13 km^3";
+private String meanRadius = "25,362 km";
+private String surfaceGravity = "8.87 m/s^2";
+private String escapeVelocity = "76,968 km/h";
+private String numberOfSatellites = "27";
+private String planetDescription = "Seventh planet from the sun. As the name Uranus has been the "
 +"subject of jokes, the planet's composition of methane and ammonia actually would produce what "
 +"is potentially the most foul odor in the system. It also stands unique as being "
 +"the only planet to rotate on its side within the Solar System.";
@@ -60,7 +60,7 @@ String planetDescription = "Seventh planet from the sun. As the name Uranus has 
         d_XOldValue = xCoord;
         semiMajorAxis = 200;
         orbitalDuration = 30660.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("uranusXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -70,7 +70,7 @@ String planetDescription = "Seventh planet from the sun. As the name Uranus has 
         d_YOldValue = yCoord;
         semiMajorAxis = 200;
         orbitalDuration = 30660.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("uranusYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }

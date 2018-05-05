@@ -20,19 +20,19 @@ public class Mars extends AbstractModel implements Planet
        this.orbit = orbit;
     }
 
-double semiMajorAxis;
-double orbitalDuration;
+private double semiMajorAxis;
+private double orbitalDuration;
 
-String orbitalPeriod = "687 Earth days";
-String orbitalVelocity = "86,677 km/h";
-String mass = "6.41*10^23 kg";
-String volume = "1.63*10^11 km^3";
-String meanRadius = "3389.5 km";
-String surfaceGravity = "3.71 m/s^2";
-String escapeVelocity = "18,108 km/h";
-String numberOfSatellites = "2";
-String planetDescription = "Fourth planet from the sun. The planet's red hue comes from"
-+"large deposits of oxidized iron on its surface. Ongoing research suggests that"
+private String orbitalPeriod = "687 Earth days";
+private String orbitalVelocity = "86,677 km/h";
+private String mass = "6.41*10^23 kg";
+private String volume = "1.63*10^11 km^3";
+private String meanRadius = "3389.5 km";
+private String surfaceGravity = "3.71 m/s^2";
+private String escapeVelocity = "18,108 km/h";
+private String numberOfSatellites = "2";
+private String planetDescription = "Fourth planet from the sun. The planet's red hue comes from "
++"large deposits of oxidized iron on its surface. Ongoing research suggests that "
 +"the planet may have had oceans in its ancient history.";
 
 double d_XOldValue = 0;
@@ -60,7 +60,7 @@ double d_YOldValue = 0;
         d_XOldValue = xCoord;
         semiMajorAxis = 85.0;
         orbitalDuration = 687.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("marsXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -71,7 +71,7 @@ double d_YOldValue = 0;
         d_YOldValue = yCoord;
         semiMajorAxis = 85.0;
         orbitalDuration = 687.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("marsYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }

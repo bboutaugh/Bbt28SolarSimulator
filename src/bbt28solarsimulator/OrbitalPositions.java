@@ -5,6 +5,11 @@
  */
 package bbt28solarsimulator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+
 /**
  *
  * @author Brad
@@ -12,54 +17,46 @@ package bbt28solarsimulator;
 public class OrbitalPositions implements java.io.Serializable
 {
     
-    double mercuryXCoordinate;
-    double mercuryYCoordinate;
-    double venusXCoordinate;
-    double venusYCoordinate;
-    double earthXCoordinate;
-    double earthYCoordinate;
-    double marsXCoordinate;
-    double marsYCoordinate;
-    double jupiterXCoordinate;
-    double jupiterYCoordinate;
-    double saturnXCoordinate;
-    double saturnYCoordinate;
-    double uranusXCoordinate;
-    double uranusYCoordinate;
-    double neptuneXCoordinate;
-    double neptuneYCoordinate;
-
-    public double getMercuryXCoordinate() {
-        return mercuryXCoordinate;
+    private double mercuryXCoordinate;
+    private double mercuryYCoordinate;
+    private double venusXCoordinate;
+    private double venusYCoordinate;
+    private double earthXCoordinate;
+    private double earthYCoordinate;
+    private double marsXCoordinate;
+    private double marsYCoordinate;
+    private double jupiterXCoordinate;
+    private double jupiterYCoordinate;
+    private double saturnXCoordinate;
+    private double saturnYCoordinate;
+    private double uranusXCoordinate;
+    private double uranusYCoordinate;
+    private double neptuneXCoordinate;
+    private double neptuneYCoordinate;
+    
+    private ArrayList<Double> al = new ArrayList<>();
+   
+    OrbitalPositions(ArrayList<Double> al)
+    {
+       this.al = al; 
+       al.add(mercuryXCoordinate);
+       al.add(mercuryYCoordinate);
+       al.add(venusXCoordinate);
+       al.add(venusYCoordinate);
+       al.add(earthXCoordinate);
+       al.add(earthYCoordinate);      
+       al.add(marsXCoordinate);
+       al.add(marsYCoordinate);
+       al.add(jupiterXCoordinate);
+       al.add(jupiterYCoordinate);
+       al.add(saturnXCoordinate);
+       al.add(saturnYCoordinate);
+       al.add(uranusXCoordinate);
+       al.add(uranusYCoordinate);
+       al.add(neptuneXCoordinate);
+       al.add(neptuneYCoordinate);
     }
 
-    public void setMercuryXCoordinate(double mercuryXCoordinate) {
-        this.mercuryXCoordinate = mercuryXCoordinate;
-    }
-
-    public double getMercuryYCoordinate() {
-        return mercuryYCoordinate;
-    }
-
-    public void setMercuryYCoordinate(double mercuryYCoordinate) {
-        this.mercuryYCoordinate = mercuryYCoordinate;
-    }
-
-    public double getVenusXCoordinate() {
-        return venusXCoordinate;
-    }
-
-    public void setVenusXCoordinate(double venusXCoordinate) {
-        this.venusXCoordinate = venusXCoordinate;
-    }
-
-    public double getVenusYCoordinate() {
-        return venusYCoordinate;
-    }
-
-    public void setVenusYCoordinate(double venusYCoordinate) {
-        this.venusYCoordinate = venusYCoordinate;
-    }
 
     public double getEarthXCoordinate() {
         return earthXCoordinate;
@@ -77,86 +74,8 @@ public class OrbitalPositions implements java.io.Serializable
         this.earthYCoordinate = earthYCoordinate;
     }
 
-    public double getMarsXCoordinate() {
-        return marsXCoordinate;
-    }
-
-    public void setMarsXCoordinate(double marsXCoordinate) {
-        this.marsXCoordinate = marsXCoordinate;
-    }
-
-    public double getMarsYCoordinate() {
-        return marsYCoordinate;
-    }
-
-    public void setMarsYCoordinate(double marsYCoordinate) {
-        this.marsYCoordinate = marsYCoordinate;
-    }
-
-    public double getJupiterXCoordinate() {
-        return jupiterXCoordinate;
-    }
-
-    public void setJupiterXCoordinate(double jupiterXCoordinate) {
-        this.jupiterXCoordinate = jupiterXCoordinate;
-    }
-
-    public double getJupiterYCoordinate() {
-        return jupiterYCoordinate;
-    }
-
-    public void setJupiterYCoordinate(double jupiterYCoordinate) {
-        this.jupiterYCoordinate = jupiterYCoordinate;
-    }
-
-    public double getSaturnXCoordinate() {
-        return saturnXCoordinate;
-    }
-
-    public void setSaturnXCoordinate(double saturnXCoordinate) {
-        this.saturnXCoordinate = saturnXCoordinate;
-    }
-
-    public double getSaturnYCoordinate() {
-        return saturnYCoordinate;
-    }
-
-    public void setSaturnYCoordinate(double saturnYCoordinate) {
-        this.saturnYCoordinate = saturnYCoordinate;
-    }
-
-    public double getUranusXCoordinate() {
-        return uranusXCoordinate;
-    }
-
-    public void setUranusXCoordinate(double uranusXCoordinate) {
-        this.uranusXCoordinate = uranusXCoordinate;
-    }
-
-    public double getUranusYCoordinate() {
-        return uranusYCoordinate;
-    }
-
-    public void setUranusYCoordinate(double uranusYCoordinate) {
-        this.uranusYCoordinate = uranusYCoordinate;
-    }
-
-    public double getNeptuneXCoordinate() {
-        return neptuneXCoordinate;
-    }
-
-    public void setNeptuneXCoordinate(double neptuneXCoordinate) {
-        this.neptuneXCoordinate = neptuneXCoordinate;
-    }
-
-    public double getNeptuneYCoordinate() {
-        return neptuneYCoordinate;
-    }
-
-    public void setNeptuneYCoordinate(double neptuneYCoordinate) {
-        this.neptuneYCoordinate = neptuneYCoordinate;
     }
     
     
             
-}
+

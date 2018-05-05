@@ -24,7 +24,8 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Brad
  */
-public class ReferencesController extends ChangeScene implements Initializable {
+public class ReferencesController extends ChangeScene implements Initializable 
+{
 
     /**
      * Initializes the controller class.
@@ -38,13 +39,6 @@ public class ReferencesController extends ChangeScene implements Initializable {
     @FXML
     TextArea textArea;
     
-private void propertyChange(PropertyChangeEvent event)
-{
-   if(event.getPropertyName().equals("newText"))
-        {
-        textArea.setText((String)event.getNewValue());  
-        }
-}
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

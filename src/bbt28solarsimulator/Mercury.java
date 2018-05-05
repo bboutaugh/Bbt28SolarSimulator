@@ -16,23 +16,23 @@ public class Mercury extends AbstractModel implements Planet
     {
         this.orbit = orbit;
     }
-    double d_XOldValue;
-    double d_YOldValue;
-double xCoordinate;
-double yCoordinate;
+   private  double d_XOldValue;
+   private  double d_YOldValue;
+private double xCoordinate;
+private double yCoordinate;
 
-double semiMajorAxis;
-double orbitalDuration;
+private double semiMajorAxis;
+private double orbitalDuration;
 
- String orbitalPeriod = "88 Earth Days";
-String orbitalVelocity = "170,503 km/h"; 
-String mass = "3.3*10^23 kg";
-String volume = "6.08*10^10 km^3";
-String meanRadius = "2,439.7 km";
-String surfaceGravity = "3.7 m/s^2";
-String escapeVelocity = "15,300 km/h";
-String numberOfSatellites = "0";
-String planetDescription = "First planet from the sun. It is the smallest planet in the" 
+ private String orbitalPeriod = "88 Earth Days";
+private String orbitalVelocity = "170,503 km/h"; 
+private String mass = "3.3*10^23 kg";
+private String volume = "6.08*10^10 km^3";
+private String meanRadius = "2,439.7 km";
+private String surfaceGravity = "3.7 m/s^2";
+private String escapeVelocity = "15,300 km/h";
+private String numberOfSatellites = "0";
+private String planetDescription = "First planet from the sun. It is the smallest planet in the " 
 + "Solar System after Pluto was demoted to planetoid status. While its surface is "
 + "expectedly hot during the day (800 degrees Fahrenheit) its surface drops to -290 "
 + "degrees Fahrenheit at night.";
@@ -51,28 +51,30 @@ String planetDescription = "First planet from the sun. It is the smallest planet
        firePropertyChange("planetDescription",oldValue,planetDescription);
     }
 
-     @Override
+    @Override
     public void getPlanetXCoord(double time,double xCoord) 
     {
         
         d_XOldValue = xCoord;
         semiMajorAxis = 25.0;
         orbitalDuration = 88.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("mercuryXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
+    
     @Override
         public void getPlanetYCoord(double time, double yCoord) 
     {
         d_YOldValue = yCoord;
         semiMajorAxis = 25.0;
         orbitalDuration = 88.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("mercuryYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }
     
+       
 }
 /*
   semiMajorAxis = 58.0;

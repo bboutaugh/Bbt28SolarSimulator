@@ -16,26 +16,26 @@ public class Jupiter extends AbstractModel implements Planet
     {
     this.orbit = orbit;    
     }
-double xCoordinate;
-double yCoordinate;
+private double xCoordinate;
+private double yCoordinate;
 
-double semiMajorAxis;
+private double semiMajorAxis;
 double orbitalDuration;
 
- double d_XOldValue; 
- double d_YOldValue;
-String orbitalPeriod = "4,380 Earth days";
-String orbitalVelocity = "47,002 km/h";
-String mass = "1.9*10^27 kg";
-String volume = "1.43*10^15 km^3";
-String meanRadius = "69,911 km";
-String surfaceGravity =  "24.79 m/s^2" ;
-String escapeVelocity = "216,720 km/h";
-String numberOfSatellites = "53";
-String planetDescription = "Fifth planet from the sun. As the largest planet within the"
-+ "Solar System, Jupiter has served as a hypothetical bouncer regulating the movement"
+ private double d_XOldValue; 
+ private double d_YOldValue;
+private String orbitalPeriod = "4,380 Earth days";
+private String orbitalVelocity = "47,002 km/h";
+private String mass = "1.9*10^27 kg";
+private String volume = "1.43*10^15 km^3";
+private String meanRadius = "69,911 km";
+private String surfaceGravity =  "24.79 m/s^2" ;
+private String escapeVelocity = "216,720 km/h";
+private String numberOfSatellites = "53";
+private String planetDescription = "Fifth planet from the sun. As the largest planet within the "
++ "Solar System, Jupiter has served as a hypothetical bouncer regulating the movement "
 + "of large bodies through the system while also reducing the number of harmful "
-+ "asteroids/meteorites coming with a potential path to Earth. Its largest hurricane, known as the "
++ "asteroids/meteorites coming within the path of Earth. Its largest hurricane, known as the "
 + "\"Great Red Spot\" is the largest in the system with capacity to fit two Earths.";
 
 
@@ -62,7 +62,7 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
         d_XOldValue = xCoord;
         semiMajorAxis = 130;
         orbitalDuration = 4380.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("jupiterXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -72,7 +72,7 @@ String planetDescription = "Fifth planet from the sun. As the largest planet wit
         d_YOldValue = yCoord;
         semiMajorAxis = 130;
         orbitalDuration = 4380.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("jupiterYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }

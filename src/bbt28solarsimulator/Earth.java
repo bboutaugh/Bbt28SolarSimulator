@@ -26,30 +26,25 @@ public class Earth extends AbstractModel implements Planet
     {
         this.orbit = orbit;
     }
+    
+private double xCoordinate;
+private double yCoordinate;
 
+private double semiMajorAxis;
+private double orbitalDuration;
 
-double eccentricAnamoly;
-double eccentricity;
-double xAxis;
-double yAxis;
-double xCoordinate;
-double yCoordinate;
+private double d_YOldValue = 0;
+private double d_XOldValue = 0;
 
-double semiMajorAxis;
-double orbitalDuration;
-
-double d_YOldValue = 0;
-double d_XOldValue = 0;
-
-String orbitalPeriod =  "365 Earth days";
-String orbitalVelocity =  "107,218 km/h";
-String mass = "5.97*10^24 kg";
-String volume = "1.08*10^12 km^3";
-String meanRadius =  "6,371 km";
-String surfaceGravity = "9.81 m/s^2";
-String escapeVelocity = "40,284 km/h";
-String numberOfSatellites = "1";
-String planetDescription = "Third planet from the sun. Aside from being the only "
+private String orbitalPeriod =  "365 Earth days";
+private String orbitalVelocity =  "107,218 km/h";
+private String mass = "5.97*10^24 kg";
+private String volume = "1.08*10^12 km^3";
+private String meanRadius =  "6,371 km";
+private String  surfaceGravity = "9.81 m/s^2";
+private String escapeVelocity = "40,284 km/h";
+private String numberOfSatellites = "1";
+private String planetDescription = "Third planet from the sun. Aside from being the only "
         + "known body in the Solar System to currently support life, Earth is also"
         + " one of only two bodies,the other being the moon Titan, to support stable "
         + "bodies of surface liquid. All of this made possible with the assistance"
@@ -81,7 +76,7 @@ String planetDescription = "Third planet from the sun. Aside from being the only
         d_XOldValue = xCoord;
         semiMajorAxis = 75;
         orbitalDuration = 365.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("earthXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -91,7 +86,7 @@ String planetDescription = "Third planet from the sun. Aside from being the only
         d_YOldValue = yCoord;
         semiMajorAxis = 75;
         orbitalDuration = 365.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("earthYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }

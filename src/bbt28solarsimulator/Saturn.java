@@ -16,24 +16,24 @@ public class Saturn extends AbstractModel implements Planet
     {
         this.orbit = orbit;
     }
-double d_XOldValue;
-double d_YOldValue;
-double xCoordinate;
-double yCoordinate;
+private double d_XOldValue;
+private double d_YOldValue;
+private double xCoordinate;
+private double yCoordinate;
 
-double semiMajorAxis;
-double orbitalDuration;
+private double semiMajorAxis;
+private double orbitalDuration;
 
-String orbitalPeriod = "10,585 Earth days";
-String orbitalVelocity = "34,701 km/h";
-String mass = "5.68*10^26 kg";
-String volume = "8.27*10^14 km^3";
-String  meanRadius = "58,232 km";
-String surfaceGravity = "10.4 m/s^2";
-String escapeVelocity = "129,924 km/h";
-String numberOfSatellites = "62";
-String planetDescription = "Sixth planet from the sun. Other than being massive in size,"
-+ "Saturn has a complex ring system that has what is possibly the most diverse array"
+private String orbitalPeriod = "10,585 Earth days";
+private String orbitalVelocity = "34,701 km/h";
+private String mass = "5.68*10^26 kg";
+private String volume = "8.27*10^14 km^3";
+private String  meanRadius = "58,232 km";
+private String surfaceGravity = "10.4 m/s^2";
+private String escapeVelocity = "129,924 km/h";
+private String numberOfSatellites = "62";
+private String planetDescription = "Sixth planet from the sun. Other than being massive in size, "
++ "Saturn has a complex ring system that has what is possibly one of the most diverse arrays "
 + "of orbiting bodies of the Solar System and perhaps beyond. ";
 
     @Override
@@ -58,7 +58,7 @@ String planetDescription = "Sixth planet from the sun. Other than being massive 
         d_XOldValue = xCoord;
         semiMajorAxis = 170;
         orbitalDuration = 10585;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("saturnXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -68,7 +68,7 @@ String planetDescription = "Sixth planet from the sun. Other than being massive 
         d_YOldValue = yCoord;
         semiMajorAxis = 170;
         orbitalDuration = 10585;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("saturnYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }

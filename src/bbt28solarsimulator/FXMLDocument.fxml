@@ -40,7 +40,7 @@
           <Menu fx:id="menuOrbitalSpeed" mnemonicParsing="false" text="Orbit Speed">
             <items>
                   <MenuItem fx:id="halfSpeedMenuItem" mnemonicParsing="false" onAction="#onClickHalfSpeedAction" text="x 0.5" />
-              <MenuItem fx:id="regularSpeedMenuItem" mnemonicParsing="false" onAction="#onClickRegularSpeedAction" text="x 1.0" />
+              <MenuItem fx:id="regularSpeedMenuItem" mnemonicParsing="false" onAction="#onClickRegularSpeedAction" text="Reset" />
                   <MenuItem fx:id="doubleSpeedMenuItem" mnemonicParsing="false" onAction="#onClickDoubleSpeedAction" text="x 2.0" />
                   <MenuItem fx:id="fiveTimesSpeedMenuItem" mnemonicParsing="false" onAction="#onClickFiveTimeSpeedAction" text="x 5.0" />
             </items>
@@ -83,7 +83,7 @@
                      </HBox.margin>
                   </Button>
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveAction" prefHeight="36.0" prefWidth="100.0" text="Save" />
-                  <Label text="x position: ">
+                  <Label text="Earth X position: ">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -91,20 +91,20 @@
                         <Insets left="80.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label text="0.0" fx:id="xPositionDisplay">
+                  <Label maxWidth="50.0" text="0.0" fx:id="xPositionDisplay">
                      <padding>
-                        <Insets right="40.0" top="10.0" />
+                        <Insets right="10.0" top="10.0" />
                      </padding>
                      <HBox.margin>
-                        <Insets />
+                        <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="y position: ">
+                  <Label text="Earth Y position: ">
                      <padding>
                         <Insets top="10.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="yPositionDisplay" text="0.0">
+                  <Label fx:id="yPositionDisplay" maxWidth="50.0" text="0.0">
                      <padding>
                         <Insets top="10.0" />
                      </padding>
@@ -145,7 +145,7 @@
                         <Insets bottom="10.0" />
                      </padding>
                   </Label>
-                  <TextArea fx:id="planetDescriptionDisplay" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+                  <TextArea fx:id="planetDescriptionDisplay" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
                </children>
             </VBox>
             <Pane fx:id="solarPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -159,10 +159,10 @@
                   <Circle fx:id="venusCircle" fill="#e0f2be" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickVenusAction" radius="4.7" stroke="BLACK" strokeType="INSIDE" />
                   <Circle fx:id="earthCircle" fill="DODGERBLUE" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickEarthAction" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
                   <Circle fx:id="marsCircle" fill="#ff371f" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickMarsAction" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="jupiterCircle" fill="#ff8a1f" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickJupiterAction" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="saturnCircle" fill="#d3da00" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickSaturnAction" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="uranusCircle" fill="#b2f8f8" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickUranusAction" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Circle fx:id="neptuneCircle" fill="#000361" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickNeptuneAction" radius="18.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="jupiterCircle" fill="#ff8a1f" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickJupiterAction" radius="28.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="saturnCircle" fill="#d3da00" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickSaturnAction" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="uranusCircle" fill="#b2f8f8" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickUranusAction" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="neptuneCircle" fill="#000361" layoutX="338.0" layoutY="238.0" onMouseClicked="#onClickNeptuneAction" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </Pane>
          </children>

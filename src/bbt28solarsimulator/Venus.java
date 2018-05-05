@@ -17,25 +17,25 @@ public class Venus extends AbstractModel implements Planet
         this.orbit = orbit;
     }
     
-    double d_XOldValue;
-    double d_YOldValue;
-double xCoordinate;
-double yCoordinate;
+private double d_XOldValue;
+private double d_YOldValue;
+private double xCoordinate;
+private double yCoordinate;
 
-double semiMajorAxis;
-double orbitalDuration;
+private double semiMajorAxis;
+private double orbitalDuration;
     
-String orbitalPeriod = "225 Earth days";
-String orbitalVelocity = "126,074 km/h";
-String mass = "4.87 *10^24 kg";
-String volume = "9.28*10^11 km^3";
-String meanRadius = "6,051.8 km";
-String surfaceGravity = "8.87 m/s^2";
-String escapeVelocity = "37,296 km/h";
-String numberOfSatellites = "0";
-String planetDescription = "Second planet from the sun. Its proximity to the sun coupled"
+private String orbitalPeriod = "225 Earth days";
+private String orbitalVelocity = "126,074 km/h";
+private String mass = "4.87 *10^24 kg";
+private String volume = "9.28*10^11 km^3";
+private String meanRadius = "6,051.8 km";
+private String surfaceGravity = "8.87 m/s^2";
+private String escapeVelocity = "37,296 km/h";
+private String numberOfSatellites = "0";
+private String planetDescription = "Second planet from the sun. Its proximity to the sun coupled "
 +"with a runaway greenhouse effect, Venus' surface temperature is a raging 900 degrees Fahrenheit."
-+"While keeping the surface hot, its atmoshpere also travels at an incredible speed"
++"While keeping the surface hot, its atmoshpere also travels at an incredible speed "
 +"sending clouds around the planet in just 5 Earth days. ";
 
     @Override
@@ -60,7 +60,7 @@ String planetDescription = "Second planet from the sun. Its proximity to the sun
         d_XOldValue = xCoord;
         semiMajorAxis = 54.0;
         orbitalDuration = 225.0;
-        xCoord = semiMajorAxis*(Math.cos((time*30)/orbitalDuration));
+        xCoord = semiMajorAxis*(Math.cos((time*50)/orbitalDuration));
         firePropertyChange("venusXCoord",d_XOldValue,xCoord);
         orbit.setPlanetXPosition(xCoord);
     }
@@ -70,7 +70,7 @@ String planetDescription = "Second planet from the sun. Its proximity to the sun
         d_YOldValue = yCoord;
         semiMajorAxis = 54.0;
         orbitalDuration = 225.0;
-        yCoord = semiMajorAxis*(Math.sin((time*30)/orbitalDuration));
+        yCoord = semiMajorAxis*(Math.sin((time*50)/orbitalDuration));
         firePropertyChange("venusYCoord",d_YOldValue,yCoord);
         orbit.setPlanetYPosition(yCoord);
     }
